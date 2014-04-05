@@ -14,6 +14,15 @@ To speed up the typing you can also run this script.
 ./env.sh
 ```
 
+## Testing
+
+Install nosetests
+
+```sh
+#!/bin/sh
+easy_install nose
+```
+
 Run tests
 
 ```sh
