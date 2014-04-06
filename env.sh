@@ -1,4 +1,2 @@
-#!/bin/sh
-
 export PYTHONPATH=.
 

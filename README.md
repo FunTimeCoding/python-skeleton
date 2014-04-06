@@ -7,11 +7,11 @@ To run the program from the **bin** directory, export **PYTHONPATH** first.
 export PYTHONPATH=.
 ```
 
-To speed up the typing you can also run this script.
+To speed up the typing you can also **source** this script.
 
 ```sh
 #!/bin/sh
-./env.sh
+source env.sh
 ```
 
 ## Testing
