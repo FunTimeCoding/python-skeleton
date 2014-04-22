@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+__author__ = "shiin"
+
+from lib.my_class import MyClass
+
+
+def main():
+    print('hello world')
+    x = MyClass()
+    print(x.myMethod())
+
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,5 @@
 from nose.tools import eq_
-from NAME.my_class import MyClass
+from lib.my_class import MyClass
 
 
 def test_my_method():
