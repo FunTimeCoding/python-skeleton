@@ -20,7 +20,7 @@ Install nosetests
 
 ```sh
 #!/bin/sh
-easy_install nose
+pip3 install nose
 ```
 
 Run tests
