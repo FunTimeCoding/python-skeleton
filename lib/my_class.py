@@ -1,4 +1,4 @@
 class MyClass:
 
-    def myMethod(self):
-        return 1
+    def run(self):
+        return 0

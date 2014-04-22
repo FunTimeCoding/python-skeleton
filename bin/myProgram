@@ -5,9 +5,9 @@ from lib.my_class import MyClass
 
 
 def main():
-    print('hello world')
+    print('Hello World')
     x = MyClass()
-    print(x.myMethod())
+    return x.run()
 
 if __name__ == '__main__':
     main()

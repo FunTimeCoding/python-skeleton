@@ -4,4 +4,4 @@ from lib.my_class import MyClass
 
 def test_my_method():
     x = MyClass()
-    eq_(x.myMethod(), 1)
+    eq_(x.run(), 0)
