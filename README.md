@@ -21,6 +21,7 @@ Install nosetests
 ```sh
 #!/bin/sh
 pip3 install nose
+pip3 install nose-cov
 ```
 
 Run tests
