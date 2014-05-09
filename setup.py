@@ -11,7 +11,7 @@ config = {
     'download_url': 'http://funtimecoding.org/download/projectname.tar.gz',
     'author_email': 'funtimecoding@gmail.com',
     'version': '0.1',
-    'install_requires': ['nose'],
+    'install_requires': ['nose', 'nose-cov'],
     'packages': ['NAME'],
     'scripts': [],
     'name': 'projectname'
