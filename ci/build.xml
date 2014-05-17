@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="python-skeleton" default="build" basedir="../">
     <property name="workspace" value="${basedir}"/>
-    <property name="current_dir" value="${workspace}/jenkins"/>
+    <property name="current_dir" value="${workspace}/ci"/>
 
     <target name="build" depends="tests"/>
 
@@ -17,7 +17,7 @@
         <exec executable="bash">
             <arg value="-l"/>
             <arg value="-c"/>
-            <arg value="nosetests -c jenkins/nose.ini"/>
+            <arg value="nosetests -c ci/nose.ini"/>
         </exec>
     </target>
 </project>

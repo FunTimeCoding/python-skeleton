@@ -1,5 +1,5 @@
 *.pyc
 .ropeproject
 .coverage
-jenkins/build
+ci/build
 
