@@ -23,4 +23,3 @@ Run tests
 #!/bin/sh
 nosetsts
 ```
-
