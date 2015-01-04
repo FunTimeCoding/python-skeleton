@@ -1,25 +1,44 @@
-#!/bin/sh
+#!/bin/sh -e
 
 NAME=${1}
 
 if [ "${NAME}" = "" ]; then
-    echo "usage: ${0} SomeCapitalizedProjectName"
+    echo "Usage: ${0} SomeCapitalizedProjectName"
     exit 1
 fi
 
-UNDERSCORE_NAME="asdf_asdf"
-DASH_NAME="asdf-asdf"
-CAPITALIZED_NAME="AsdfAsdf"
-INITIALS="aa"
+if [[ ! ${NAME} =~ ^([A-Z][a-z0-9]+){2,}$ ]]; then
+    echo "Name must be UpperCamelCase."
+    exit 1
+fi
 
-#SED_CMD="sed -i \"\" -e"
-SED_CMD="sed -e"
+ORIGINAL_UNDERSCORE_NAME="example_class"
+ORIGINAL_BIN_NAME="example-script"
+ORIGINAL_CAPITALIZED_NAME="ExampleClass"
 
-${SED_CMD} "s/ec/${INITIALS}/g" "bin/example-script" "test/test_example_class.py"
-${SED_CMD} "s/example_class/${UNDERSCORE_NAME}/g" "bin/example-script" "test/test_example_class.py"
-${SED_CMD} "s/ExampleClass/${CAPITALIZED_NAME}/g" "bin/example-script" "test/test_example_class.py"
+NEW_UNDERSCORE_NAME=$(echo ${NAME} | sed -E 's/([A-Za-z0-9])([A-Z])/\1_\2/g')
+NEW_BIN_NAME=$(echo ${NEW_UNDERSCORE_NAME} | sed -E 's/_/-/g')
+NEW_CAPITALIZED_NAME=${NAME}
+NEW_INITIALS=$(echo ${NAME} | sed 's/\([A-Z]\)[a-z]*/\1/g')
 
-#mv "test/test_example_class.py" "test/test_${UNDERSCORE_NAME}.py"
-#mv "bin/example-script" "bin/${DASH_NAME}"
+NEW_UNDERSCORE_NAME=$(echo ${NEW_UNDERSCORE_NAME} | tr '[:upper:]' '[:lower:]')
+NEW_BIN_NAME=$(echo ${NEW_BIN_NAME} | tr '[:upper:]' '[:lower:]')
 
-echo "Project initialized as: ${CAPITALIZED_NAME}"
+echo "Underscore: ${NEW_UNDERSCORE_NAME}"
+echo "Script: ${NEW_BIN_NAME}"
+echo "Capitalized: ${NEW_CAPITALIZED_NAME}"
+echo "Initials: ${NEW_INITIALS}"
+
+SED_CMD="sed -i \"\" -e"
+#SED_CMD="sed -e"
+
+SUBSITUTE_FILES="bin/${ORIGINAL_BIN_NAME} test/test_${ORIGINAL_UNDERSCORE_NAME}.py"
+
+exit 0
+
+${SED_CMD} "s/ec/${NEW_INITIALS}/g" ${SUBSITUTE_FILES}
+${SED_CMD} "s/${ORIGINAL_UNDERSCORE_NAME}/${NEW_UNDERSCORE_NAME}/g" ${SUBSITUTE_FILES}
+${SED_CMD} "s/${ORIGINAL_CAPITALIZED_NAME}/${NEW_CAPITALIZED_NAME}/g" ${SUBSITUTE_FILES}
+
+#mv "test/test_${ORIGINAL_UNDERSCORE_NAME}.py" "test/test_${NEW_UNDERSCORE_NAME}.py"
+#mv "bin/${ORIGINAL_BIN_NAME}" "bin/${NEW_BIN_NAME}"
