@@ -1,44 +1,37 @@
 #!/bin/sh -e
 
-NAME=${1}
+CAPITALIZED=${1}
 
-if [ "${NAME}" = "" ]; then
-    echo "Usage: ${0} SomeCapitalizedProjectName"
+if [ "${CAPITALIZED}" = "" ]; then
+    echo "Usage: ${0} MyCapitalizedProjectName"
     exit 1
 fi
 
-if [[ ! ${NAME} =~ ^([A-Z][a-z0-9]+){2,}$ ]]; then
-    echo "Name must be UpperCamelCase."
+if [[ ! ${CAPITALIZED} =~ ^([A-Z][a-z0-9]+){2,}$ ]]; then
+    echo "Project name must be in UpperCamelCase."
     exit 1
 fi
 
-ORIGINAL_UNDERSCORE_NAME="example_class"
-ORIGINAL_BIN_NAME="example-script"
-ORIGINAL_CAPITALIZED_NAME="ExampleClass"
+OLD_UNDERSCORE="example_class"
+OLD_BIN="example-script"
+OLD_CAPITALIZED="ExampleClass"
 
-NEW_UNDERSCORE_NAME=$(echo ${NAME} | sed -E 's/([A-Za-z0-9])([A-Z])/\1_\2/g')
-NEW_BIN_NAME=$(echo ${NEW_UNDERSCORE_NAME} | sed -E 's/_/-/g')
-NEW_CAPITALIZED_NAME=${NAME}
-NEW_INITIALS=$(echo ${NAME} | sed 's/\([A-Z]\)[a-z]*/\1/g')
+UNDERSCORE=$(echo ${CAPITALIZED} | sed -E 's/([A-Za-z0-9])([A-Z])/\1_\2/g' | tr '[:upper:]' '[:lower:]')
+BIN=$(echo ${UNDERSCORE} | sed -E 's/_/-/g')
+INITIALS=$(echo ${CAPITALIZED} | sed 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]' )
 
-NEW_UNDERSCORE_NAME=$(echo ${NEW_UNDERSCORE_NAME} | tr '[:upper:]' '[:lower:]')
-NEW_BIN_NAME=$(echo ${NEW_BIN_NAME} | tr '[:upper:]' '[:lower:]')
-
-echo "Underscore: ${NEW_UNDERSCORE_NAME}"
-echo "Script: ${NEW_BIN_NAME}"
-echo "Capitalized: ${NEW_CAPITALIZED_NAME}"
-echo "Initials: ${NEW_INITIALS}"
-
-SED_CMD="sed -i \"\" -e"
-#SED_CMD="sed -e"
-
-SUBSITUTE_FILES="bin/${ORIGINAL_BIN_NAME} test/test_${ORIGINAL_UNDERSCORE_NAME}.py"
+echo "Underscore: ${UNDERSCORE}"
+echo "Bin: ${BIN}"
+echo "Capitalized: ${CAPITALIZED}"
+echo "Initials: ${INITIALS}"
 
 exit 0
 
-${SED_CMD} "s/ec/${NEW_INITIALS}/g" ${SUBSITUTE_FILES}
-${SED_CMD} "s/${ORIGINAL_UNDERSCORE_NAME}/${NEW_UNDERSCORE_NAME}/g" ${SUBSITUTE_FILES}
-${SED_CMD} "s/${ORIGINAL_CAPITALIZED_NAME}/${NEW_CAPITALIZED_NAME}/g" ${SUBSITUTE_FILES}
+SUBSITUTE_FILES="bin/${OLD_BIN} test/test_${ORIGINAL_UNDERSCORE}.py"
+SED_CMD="sed -i \"\" -e"
+${SED_CMD} "s/ec/${INITIALS}/g" ${SUBSITUTE_FILES}
+${SED_CMD} "s/${OLD_UNDERSCORE}/${UNDERSCORE_CAPITALIZED}/g" ${SUBSITUTE_FILES}
+${SED_CMD} "s/${OLD_CAPITALIZED}/${CAPITALIZED}/g" ${SUBSITUTE_FILES}
 
-#mv "test/test_${ORIGINAL_UNDERSCORE_NAME}.py" "test/test_${NEW_UNDERSCORE_NAME}.py"
-#mv "bin/${ORIGINAL_BIN_NAME}" "bin/${NEW_BIN_NAME}"
+#mv "test/test_${OLD_UNDERSCORE}.py" "test/test_${UNDERSCORE}.py"
+#mv "bin/${OLD_BIN}" "bin/${INITIALS}"
