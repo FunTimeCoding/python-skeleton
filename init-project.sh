@@ -21,11 +21,14 @@ echo "Underscore: ${UNDERSCORE}"
 echo "Dash: ${DASH}"
 echo "Initials: ${INITIALS}"
 
-SUBSITUTE_FILES="bin/example-script test/test_example_class.py"
-SED_CMD="sed -i \"\" -e"
-${SED_CMD} "s/ec/${INITIALS}/g" ${SUBSITUTE_FILES}
-${SED_CMD} "s/example_class/${UNDERSCORE}/g" ${SUBSITUTE_FILES}
-${SED_CMD} "s/ExampleClass/${CAMEL}/g" ${SUBSITUTE_FILES}
+SUBSITUTE_FILES=(
+"bin/example-script"
+"test/test_example_class.py"
+)
+
+sed -i "" -e "s/ec/${INITIALS}/g" ${SUBSITUTE_FILES}
+sed -i "" -e "s/example_class/${UNDERSCORE}/g" ${SUBSITUTE_FILES}
+sed -i "" -e "s/ExampleClass/${CAMEL}/g" ${SUBSITUTE_FILES}
 
 mv "test/test_example_class.py" "test/test_${UNDERSCORE}.py"
 mv "bin/example-script" "bin/${INITIALS}"
