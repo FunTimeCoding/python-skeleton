@@ -21,7 +21,7 @@ echo "Underscore: ${UNDERSCORE}"
 echo "Dash: ${DASH}"
 echo "Initials: ${INITIALS}"
 
-SUBSITUTE_FILES="bin/example-script test/test_${ORIGINAL_UNDERSCORE}.py"
+SUBSITUTE_FILES="bin/example-script test/test_example_class.py"
 SED_CMD="sed -i \"\" -e"
 ${SED_CMD} "s/ec/${INITIALS}/g" ${SUBSITUTE_FILES}
 ${SED_CMD} "s/example_class/${UNDERSCORE}/g" ${SUBSITUTE_FILES}
