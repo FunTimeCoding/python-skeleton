@@ -1,4 +1,6 @@
 #!/bin/sh -e
+# This tool can be used to initialise the template after making a fresh copy to get started quickly.
+# The goal is to make it as easy as possible to create scripts that allow easy testing and continuous integration.
 
 CAMEL=${1}
 
