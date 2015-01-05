@@ -26,7 +26,7 @@ echo "Initials: ${INITIALS}"
 sed -i "" -e "s/ec/${INITIALS}/g" bin/example-script tests/test_example_class.py
 sed -i "" -e "s/example_class/${UNDERSCORE}/g" bin/example-script tests/test_example_class.py
 sed -i "" -e "s/ExampleClass/${CAMEL}/g" bin/example-script tests/test_example_class.py lib/example_class.py
-sed -i "" -e "s/example-project/${dash}/g" setup.py
+sed -i "" -e "s/example-project/${DASH}/g" setup.py
 
 git mv "tests/test_example_class.py" "tests/test_${UNDERSCORE}.py"
 git mv "lib/example_class.py" "lib/${UNDERSCORE}.py"
