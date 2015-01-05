@@ -31,3 +31,5 @@ sed -i "" -e "s/example-project/${DASH}/g" setup.py
 git mv "tests/test_example_class.py" "tests/test_${UNDERSCORE}.py"
 git mv "lib/example_class.py" "lib/${UNDERSCORE}.py"
 git mv "bin/example-script" "bin/${INITIALS}"
+
+echo "Done. Files were edited and moved using git. Review those changes. You may also delete this script now."
