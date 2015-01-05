@@ -1,25 +1,31 @@
 # Python Skeleton
 
+
+## Operation
+
 To run the program from the **bin** directory, export **PYTHONPATH** first.
 
 ```sh
-#!/bin/sh
 export PYTHONPATH=.
 ```
 
-## Testing
 
-Install nosetests
+## Running tests
+
+Install nosetests.
 
 ```sh
-#!/bin/sh
-pip3 install nose
-pip3 install nose-cov
+pip3 install nose2
 ```
 
-Run tests
+Run tests.
 
 ```sh
-#!/bin/sh
-nosetsts
+nose2
+```
+
+Run ant like CI would. Requires ant to be installed.
+
+```sh
+ant
 ```
