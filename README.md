@@ -3,16 +3,16 @@
 
 ## Operation
 
-To run the program from the `bin` directory, export `PYTHONPATH` first.
+Run scripts.
 
 ```sh
-export PYTHONPATH=.
+PYTHONPATH=. bin/example-script
 ```
 
 
-## Running tests
+## Testing
 
-Install nosetests.
+Install test tools.
 
 ```sh
 pip3 install nose2
@@ -24,7 +24,7 @@ Run tests.
 nose2
 ```
 
-Run ant like CI would. Requires ant to be installed.
+Run ant like Jenkins. Requires `ant` to be installed.
 
 ```sh
 ant
@@ -33,4 +33,4 @@ ant
 
 ## Important details
 
-The reason why the `tests` directiory is not called `test` is because of the nose2 convention.
+* The reason why the `tests` directiory is not called `test` is because of the nose2 convention.
