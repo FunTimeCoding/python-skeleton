@@ -1,0 +1,5 @@
+[html]
+directory = build/htmlcov
+[xml]
+output = build/log/coverage.xml
+; vim: ft=cfg
