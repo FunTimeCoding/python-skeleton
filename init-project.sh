@@ -21,12 +21,12 @@ echo "Underscore: ${UNDERSCORE}"
 echo "Dash: ${DASH}"
 echo "Initials: ${INITIALS}"
 
-SUBSITUTE_FILES="bin/example-script lib/example_class.py test/test_example_class.py"
+SUBSITUTE_FILES="bin/example-script lib/example_class.py tests/test_example_class.py"
 
 sed -i "" -e "s/ec/${INITIALS}/g" ${SUBSITUTE_FILES}
 sed -i "" -e "s/example_class/${UNDERSCORE}/g" ${SUBSITUTE_FILES}
 sed -i "" -e "s/ExampleClass/${CAMEL}/g" ${SUBSITUTE_FILES}
 
-git mv "test/test_example_class.py" "test/test_${UNDERSCORE}.py"
+git mv "tests/test_example_class.py" "tests/test_${UNDERSCORE}.py"
 git mv "lib/example_class.py" "lib/${UNDERSCORE}.py"
 git mv "bin/example-script" "bin/${INITIALS}"
