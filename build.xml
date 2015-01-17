@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="python-skeleton" default="build" basedir=".">
     <property name="workspace" value="${basedir}"/>
-
     <target name="build">
         <delete dir="${workspace}/build"/>
         <mkdir dir="${workspace}/build/log"/>
