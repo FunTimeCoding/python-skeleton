@@ -13,6 +13,7 @@ config = {
     'install_requires': ['nose2'],
     'packages': ['NAME'],
     'scripts': [],
+    'license': 'MIT',
     'name': 'example-project'
 }
 
