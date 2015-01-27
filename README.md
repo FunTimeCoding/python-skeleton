@@ -33,5 +33,5 @@ ant
 
 ## Important details
 
-* The reason why the `tests` directiory is not called `test` is because of the nose2 convention.
+* The reason why the `tests` directory is not called `test` is because of the nose2 convention.
 * The directories `lib/language_example` and `tests/language_example` are for sharing language specific knowledge.
