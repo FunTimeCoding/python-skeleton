@@ -11,8 +11,8 @@ config = {
     'author_email': 'funtimecoding@gmail.com',
     'version': '0.1',
     'install_requires': ['nose2'],
-    'packages': ['NAME'],
-    'scripts': [],
+    'packages': [],
+    'scripts': ['bin/example-script'],
     'license': 'MIT',
     'name': 'example-project'
 }
