@@ -5,7 +5,17 @@ This document covers important conventions.
 
 ## Glossary
 
-Specific definitions relevant to this document.
+### Camel Case Convention
+
+Upper case every word, no separation of words.
+Keep abbreviations capitalized.
+Streamline names with irregular capital letters to have only one at the beginning.
+
+```
+Camel Case Convention, camel case convention => CamelCaseConvention
+XML Library => XMLLibrary
+GitLab => Gitlab
+```
 
 
 ### Dash Convention
@@ -38,13 +48,26 @@ Initials Convention, initials convention => initials_convention
 ## Script names
 
 Script names should be in the dash or initials convention.
-Dashes are preferred over underscores since they don't require pressing shift.
+Dashes are preferred over underscores since they don't require pressing shift to type.
 
 Example:
 
 ```
 example-script.sh
 es
+```
+
+
+## Project name
+
+A unified project name is a major benefit in managing a large number of tools and libraries.
+The project name should be in camel case convention.
+
+```
+ExampleProject
+JenkinsJobManager
+GitlabTools
+JenkinsTools
 ```
 
 
@@ -66,3 +89,9 @@ This section explains how to write unified readme files.
 * One blank line after every headline.
 * Two blank lines after every section except the last. A section is every part of a document starting with a headline, but not the main headline.
 * If a section has no body, put only one blank line afterwards instead of two.
+
+
+## Contact
+
+If you do or do not like these conventions, feel free to contact me about them.
+Critique is always welcome. Useful additions and refinements also.

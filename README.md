@@ -1,4 +1,4 @@
-# Python Skeleton
+# PythonSkeleton
 
 
 ## Setup

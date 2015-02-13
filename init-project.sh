@@ -25,7 +25,7 @@ echo "Initials: ${INITIALS}"
 
 sed -i "" -e "s/ps/${INITIALS}/g" bin/ps tests/test_python_skeleton.py setup.py README.md
 sed -i "" -e "s/python_skeleton/${UNDERSCORE}/g" bin/ps tests/test_python_skeleton.py
-sed -i "" -e "s/PythonSkeleton/${CAMEL}/g" bin/ps tests/test_python_skeleton.py lib/python_skeleton.py
+sed -i "" -e "s/PythonSkeleton/${CAMEL}/g" bin/ps tests/test_python_skeleton.py lib/python_skeleton.py README.md
 sed -i "" -e "s/python-skeleton/${DASH}/g" setup.py build.xml
 sed -i "" -e "s/ps/${INITIALS}/g" setup.py
 
