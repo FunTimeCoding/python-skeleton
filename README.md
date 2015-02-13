@@ -1,37 +1,50 @@
 # Python Skeleton
 
 
-## Operation
+## Setup
 
-Run scripts.
+Install the project.
 
 ```sh
-PYTHONPATH=. bin/example-script
+pip3 install -e ../python-skeleton
+```
+
+Uninstall the project.
+
+```sh
+pip3 uninstall python-skeleton
 ```
 
 
-## Testing
+## Development
 
-Install test tools.
-
-```sh
-pip3 install nose2
-```
-
-Run tests.
+Run the main script without having to install the project.
 
 ```sh
-nose2
+PYTHONPATH=. bin/ps
 ```
 
-Run ant like Jenkins. Requires `ant` to be installed.
+Install development tools.
+
+```sh
+pip3 install -U pytest pytest-cov pylint pep8
+```
+
+Run code style check, lint check and tests.
+
+```sh
+./run-code-style-check.sh
+./run-lint-check.sh
+./run-tests.sh
+```
+
+Run `ant` like Jenkins. Requires `ant` to be installed. This generates reports in the `build` directory.
 
 ```sh
 ant
 ```
 
 
-## Important details
+## Skeleton details
 
-* The reason why the `tests` directory is not called `test` is because of the nose2 convention.
-* The directories `lib/language_example` and `tests/language_example` are for sharing language specific knowledge.
+* The reason why the `tests` directory is not called `test` is because a package named `test` exists.

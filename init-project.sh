@@ -23,14 +23,14 @@ echo "Underscore: ${UNDERSCORE}"
 echo "Dash: ${DASH}"
 echo "Initials: ${INITIALS}"
 
-sed -i "" -e "s/ec/${INITIALS}/g" bin/example-script tests/test_example_class.py
-sed -i "" -e "s/example_class/${UNDERSCORE}/g" bin/example-script tests/test_example_class.py
-sed -i "" -e "s/ExampleClass/${CAMEL}/g" bin/example-script tests/test_example_class.py lib/example_class.py
-sed -i "" -e "s/example-project/${DASH}/g" setup.py
-sed -i "" -e "s/example-script/${INITIALS}/g" setup.py
+sed -i "" -e "s/ps/${INITIALS}/g" bin/ps tests/test_python_skeleton.py setup.py README.md
+sed -i "" -e "s/python_skeleton/${UNDERSCORE}/g" bin/ps tests/test_python_skeleton.py
+sed -i "" -e "s/PythonSkeleton/${CAMEL}/g" bin/ps tests/test_python_skeleton.py lib/python_skeleton.py
+sed -i "" -e "s/python-skeleton/${DASH}/g" setup.py build.xml
+sed -i "" -e "s/ps/${INITIALS}/g" setup.py
 
-git mv "tests/test_example_class.py" "tests/test_${UNDERSCORE}.py"
-git mv "lib/example_class.py" "lib/${UNDERSCORE}.py"
-git mv "bin/example-script" "bin/${INITIALS}"
+git mv "tests/test_python_skeleton.py" "tests/test_${UNDERSCORE}.py"
+git mv "lib/python_skeleton.py" "lib/${UNDERSCORE}.py"
+git mv "bin/ps" "bin/${INITIALS}"
 
 echo "Done. Files were edited and moved using git. Review those changes. You may also delete this script now."
