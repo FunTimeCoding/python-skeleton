@@ -1,4 +1,4 @@
-from lib.python_skeleton import PythonSkeleton
+from python_skeleton.python_skeleton import PythonSkeleton
 
 
 def test_return_code():

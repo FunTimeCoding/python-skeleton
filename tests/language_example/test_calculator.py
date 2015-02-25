@@ -1,4 +1,4 @@
-from lib.language_example.calculator import Calculator
+from python_skeleton.language_example.calculator import Calculator
 
 
 def test_add_numbers():

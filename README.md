@@ -48,3 +48,5 @@ ant
 ## Skeleton details
 
 * The reason why the `tests` directory is not called `test` is because a package named `test` exists.
+* The main source code directory is the same name as the package in python packages.
+* Dashes in project names become underscores in python code. They are still legit.
