@@ -16,7 +16,8 @@ fi
 
 DASH=$(echo ${CAMEL} | sed -E 's/([A-Za-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
 UNDERSCORE=$(echo ${DASH} | sed -E 's/-/_/g')
-INITIALS=$(echo ${CAMEL} | sed 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]' )
+INITIALS=$(echo ${CAMEL} | sed 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]')
+LAST_WORD=$(echo ${UNDERSCORE} | rev | cut -f1 -d'_' | rev | tr '[:upper:]' '[:lower:]')
 
 echo "Camel: ${CAMEL}"
 echo "Underscore: ${UNDERSCORE}"
@@ -27,7 +28,7 @@ sed -i "" -e "s/ps/${INITIALS}/g" README.md bin/ps tests/test_python_skeleton.py
 sed -i "" -e "s/python_skeleton/${UNDERSCORE}/g" setup.py bin/ps tests/test_python_skeleton.py tests/language_example/test_calculator.py
 sed -i "" -e "s/PythonSkeleton/${CAMEL}/g" README.md bin/ps tests/test_python_skeleton.py python_skeleton/python_skeleton.py
 sed -i "" -e "s/python-skeleton/${DASH}/g" setup.py README.md build.xml
-sed -i "" -e "s/ps/${INITIALS}/g" setup.py
+sed -i "" -e "s/skeleton/${LAST_WORD}/g" bin/ps tests/test_python_skeleton.py
 
 git mv "tests/test_python_skeleton.py" "tests/test_${UNDERSCORE}.py"
 git mv "python_skeleton/python_skeleton.py" "python_skeleton/${UNDERSCORE}.py"

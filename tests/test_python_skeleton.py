@@ -2,5 +2,5 @@ from python_skeleton.python_skeleton import PythonSkeleton
 
 
 def test_return_code():
-    ps = PythonSkeleton()
-    assert ps.run() == 0
+    skeleton = PythonSkeleton()
+    assert skeleton.run() == 0
