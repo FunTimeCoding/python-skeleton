@@ -25,9 +25,9 @@ echo "Dash: ${DASH}"
 echo "Initials: ${INITIALS}"
 
 sed -i "" -e "s/ps/${INITIALS}/g" README.md bin/ps tests/test_python_skeleton.py setup.py
-sed -i "" -e "s/python_skeleton/${UNDERSCORE}/g" setup.py bin/ps tests/test_python_skeleton.py tests/language_example/test_calculator.py
+sed -i "" -e "s/python_skeleton/${UNDERSCORE}/g" setup.py bin/ps tests/test_python_skeleton.py tests/language_example/test_calculator.py sonar-project.properties
 sed -i "" -e "s/PythonSkeleton/${CAMEL}/g" README.md bin/ps tests/test_python_skeleton.py python_skeleton/python_skeleton.py
-sed -i "" -e "s/python-skeleton/${DASH}/g" setup.py README.md
+sed -i "" -e "s/python-skeleton/${DASH}/g" setup.py README.md sonar-project.properties
 sed -i "" -e "s/skeleton/${LAST_WORD}/g" bin/ps tests/test_python_skeleton.py
 
 git mv "tests/test_python_skeleton.py" "tests/test_${UNDERSCORE}.py"
