@@ -3,10 +3,16 @@
 
 ## Setup
 
-Install the project.
+Install the project from a local clone.
 
 ```sh
 pip3 install -e ../python-skeleton
+```
+
+Install the project from GitHub.
+
+```sh
+pip3 install git+git://github.com/FunTimeCoding/python-skeleton.git
 ```
 
 Uninstall the project.
@@ -27,21 +33,21 @@ PYTHONPATH=. bin/ps
 Install development tools.
 
 ```sh
-pip3 install -U pytest pytest-cov pylint pep8
+pip3 install -U -r requirements.txt
 ```
 
 Run code style check, lint check and tests.
 
 ```sh
-./run-code-style-check.sh
+./run-style-check.sh
 ./run-lint-check.sh
 ./run-tests.sh
 ```
 
-Run `ant` like Jenkins. Requires `ant` to be installed. This generates reports in the `build` directory.
+Build project like Jenkins.
 
 ```sh
-ant
+./build.sh
 ```
 
 
