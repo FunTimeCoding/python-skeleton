@@ -34,13 +34,14 @@ Install development tools.
 
 ```sh
 pip3 install -U -r requirements.txt
+brew install shellcheck
 ```
 
-Run code style check, lint check and tests.
+Run code style check, metrics and tests.
 
 ```sh
 ./run-style-check.sh
-./run-lint-check.sh
+./run-metrics.sh
 ./run-tests.sh
 ```
 

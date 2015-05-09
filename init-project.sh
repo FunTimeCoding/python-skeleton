@@ -2,22 +2,17 @@
 # This tool can be used to initialise the template after making a fresh copy to get started quickly.
 # The goal is to make it as easy as possible to create scripts that allow easy testing and continuous integration.
 
-CAMEL=${1}
+CAMEL=$(echo "${1}" | grep -E '^([A-Z][a-z0-9]+){2,}$') || CAMEL=""
 
 if [ "${CAMEL}" = "" ]; then
     echo "Usage: ${0} MyUpperCamelCaseProjectName"
     exit 1
 fi
 
-if [[ ! ${CAMEL} =~ ^([A-Z][a-z0-9]+){2,}$ ]]; then
-    echo "Project name must be in UpperCamelCase."
-    exit 1
-fi
-
-DASH=$(echo ${CAMEL} | sed -E 's/([A-Za-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
-UNDERSCORE=$(echo ${DASH} | sed -E 's/-/_/g')
-INITIALS=$(echo ${CAMEL} | sed 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]')
-LAST_WORD=$(echo ${UNDERSCORE} | rev | cut -f1 -d'_' | rev | tr '[:upper:]' '[:lower:]')
+DASH=$(echo "${CAMEL}" | sed -E 's/([A-Za-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
+UNDERSCORE=$(echo "${DASH}" | sed -E 's/-/_/g')
+INITIALS=$(echo "${CAMEL}" | sed 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]')
+LAST_WORD=$(echo "${UNDERSCORE}" | rev | cut -f1 -d'_' | rev | tr '[:upper:]' '[:lower:]')
 
 echo "Camel: ${CAMEL}"
 echo "Underscore: ${UNDERSCORE}"
