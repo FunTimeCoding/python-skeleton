@@ -62,7 +62,7 @@ mkdir -p "${BUILD_DIR}/log"
 PYVENV_HOME="${WORKSPACE}/.pyvenv"
 
 if [ "${CLEAN}" = "1" ]; then
-    rm -rf "${PYVENV_HOME}"
+    "${WORKSPACE}/clear-cache.sh"
 fi
 
 echo "Creating pyvenv."
