@@ -25,9 +25,9 @@ sed -i "" -e "s/PythonSkeleton/${CAMEL}/g" README.md bin/ps tests/test_python_sk
 sed -i "" -e "s/python-skeleton/${DASH}/g" setup.py README.md sonar-project.properties
 sed -i "" -e "s/skeleton/${LAST_WORD}/g" bin/ps tests/test_python_skeleton.py
 
-git mv "tests/test_python_skeleton.py" "tests/test_${UNDERSCORE}.py"
-git mv "python_skeleton/python_skeleton.py" "python_skeleton/${UNDERSCORE}.py"
-git mv "python_skeleton" "${UNDERSCORE}"
-git mv "bin/ps" "bin/${INITIALS}"
+git mv tests/test_python_skeleton.py "tests/test_${UNDERSCORE}.py"
+git mv python_skeleton/python_skeleton.py "python_skeleton/${UNDERSCORE}.py"
+git mv python_skeleton "${UNDERSCORE}"
+git mv bin/ps "bin/${INITIALS}"
 
 echo "Done. Files were edited and moved using git. Review those changes. You may also delete this script now."
