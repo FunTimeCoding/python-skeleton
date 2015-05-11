@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-getopt -o w:p:hcv -l workspace:,pythonhome:,help,clean,verbose --name "${0}" -- "$@"
+getopt -o w:p:hcv -l workspace:,pythonhome:,help,clean,verbose --name "${0}" -- "$@" > /dev/null
 CLEAN=0
 
 while true; do
@@ -46,6 +46,10 @@ fi
 
 echo "WORKSPACE: ${WORKSPACE}"
 
+if [ "${CLEAN}" = "1" ]; then
+    "${WORKSPACE}/clear-cache.sh"
+fi
+
 if [ ! "${PYTHONHOME}" = "" ]; then
     echo "PYTHONHOME: ${PYTHONHOME}"
     export PATH="${PYTHONHOME}/bin:${PATH}"
@@ -60,10 +64,6 @@ fi
 
 mkdir -p "${BUILD_DIR}/log"
 PYVENV_HOME="${WORKSPACE}/.pyvenv"
-
-if [ "${CLEAN}" = "1" ]; then
-    "${WORKSPACE}/clear-cache.sh"
-fi
 
 echo "Creating pyvenv."
 
