@@ -13,9 +13,9 @@ echo "Running PEP8."
 
 if [ "${CI_MODE}" = "1" ]; then
     mkdir -p build/log
-    pep8 --exclude=.git,.pyvenv,__pycache__ --statistics . | tee "build/log/pep8.txt"
+    pep8 --exclude=.git,.pyvenv,__pycache__ --statistics . | tee build/log/pep8.txt || true
 else
-    pep8 --exclude=.git,.pyvenv,__pycache__ --statistics .
+    pep8 --exclude=.git,.pyvenv,__pycache__ --statistics . || true
 fi
 
 echo ""
