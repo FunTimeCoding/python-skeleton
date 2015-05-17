@@ -73,7 +73,8 @@ fi
 
 echo "Installing requirements."
 . "${PYVENV_HOME}/bin/activate"
-pip3 install -U -r "${WORKSPACE}/requirements.txt" | tee build/log/pip.log
+pip3 install --upgrade pip
+pip3 install --upgrade -r "${WORKSPACE}/requirements.txt" | tee build/log/pip.log
 
 "${WORKSPACE}/run-style-check.sh" --ci-mode
 "${WORKSPACE}/run-metrics.sh" --ci-mode

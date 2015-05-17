@@ -3,8 +3,8 @@ from python_skeleton.python_skeleton import PythonSkeleton
 
 
 def main():
-    skeleton = PythonSkeleton()
-    return skeleton.run()
+    application = PythonSkeleton()
+    return application.run()
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,8 @@
 class PythonSkeleton:
-    def run(self):
-        self.print_hello()
+    @staticmethod
+    def run():
+        PythonSkeleton.print_hello()
+
         return 0
 
     @staticmethod
