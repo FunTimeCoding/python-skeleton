@@ -3,7 +3,7 @@
 echo "Deleting cached and generated files."
 DIR=$(dirname "${0}")
 SCRIPT_DIR=$(cd "${DIR}"; pwd)
-FILES="build .pyvenv .coverage .sonar"
+FILES="build .pyvenv .coverage"
 
 for FILE in ${FILES}; do
     if [ -e "${FILE}" ]; then
