@@ -18,12 +18,19 @@ echo "Camel: ${CAMEL}"
 echo "Underscore: ${UNDERSCORE}"
 echo "Dash: ${DASH}"
 echo "Initials: ${INITIALS}"
+OS=$(uname)
 
-sed -i "" -e "s/ps/${INITIALS}/g" README.md setup.py
-sed -i "" -e "s/python_skeleton/${UNDERSCORE}/g" setup.py bin/ps tests/test_python_skeleton.py tests/language_example/test_calculator.py sonar-project.properties
-sed -i "" -e "s/PythonSkeleton/${CAMEL}/g" README.md bin/ps tests/test_python_skeleton.py python_skeleton/python_skeleton.py
-sed -i "" -e "s/python-skeleton/${DASH}/g" setup.py README.md sonar-project.properties
-sed -i "" -e "s/skeleton/${LAST_WORD}/g" bin/ps tests/test_python_skeleton.py
+if [ "${OS}" = "Linux" ]; then
+    SED="sed -i"
+elif [ "${OS}" = "Darwin" ]; then
+    SED="sed -i \"\""
+fi
+
+${SED} -e "s/ps/${INITIALS}/g" README.md setup.py
+${SED} -e "s/python_skeleton/${UNDERSCORE}/g" setup.py bin/ps tests/test_python_skeleton.py tests/language_example/test_calculator.py sonar-project.properties
+${SED} -e "s/PythonSkeleton/${CAMEL}/g" README.md bin/ps tests/test_python_skeleton.py python_skeleton/python_skeleton.py
+${SED} -e "s/python-skeleton/${DASH}/g" setup.py README.md sonar-project.properties
+${SED} -e "s/skeleton/${LAST_WORD}/g" bin/ps tests/test_python_skeleton.py
 
 git mv tests/test_python_skeleton.py "tests/test_${UNDERSCORE}.py"
 git mv python_skeleton/python_skeleton.py "python_skeleton/${UNDERSCORE}.py"
