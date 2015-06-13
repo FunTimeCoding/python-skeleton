@@ -6,7 +6,7 @@
 Install the project from a local clone.
 
 ```sh
-pip3 install -e ../python-skeleton
+pip3 install --user --editable ../python-skeleton
 ```
 
 Install the project from GitHub.
