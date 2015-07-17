@@ -14,7 +14,7 @@ while true; do
             shift 2
             ;;
         -h|--help)
-            echo "Usage: [-h][-c|--clean][-w|--workspace WORKSPACE][-p|--pythonhome PYTHONHOME]"
+            echo "Usage: [-h][-c|--clean][-v|--verbose][-w|--workspace WORKSPACE][-p|--pythonhome PYTHONHOME]"
             exit 0
             ;;
         -c|--clean)
@@ -31,7 +31,7 @@ while true; do
             ;;
         *)
             if [ ! "${1}" = "" ]; then
-                echo "Unknown option: $1"
+                echo "Unknown option: ${1}"
             fi
             break
             ;;

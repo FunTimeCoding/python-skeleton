@@ -48,7 +48,6 @@ Install pip requirements.
 pip3 install --upgrade --user --requirement requirements.txt
 ```
 
-
 Run code style check, metrics and tests.
 
 ```sh
