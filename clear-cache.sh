@@ -12,4 +12,4 @@ for FILE in ${FILES}; do
     fi
 done
 
-find "${SCRIPT_DIR}" \( -name '__pycache__' -o -name '*.egg-info' -o -name '*.pyc' \) -exec rm -rf {} +
+find "${SCRIPT_DIR}" \( -name '__pycache__' -o -name '*.pyc' -o -name '*.egg-info' \) -delete
