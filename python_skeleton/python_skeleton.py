@@ -1,10 +1,10 @@
 class PythonSkeleton:
     @staticmethod
     def run():
-        PythonSkeleton.print_hello()
+        PythonSkeleton.hello()
 
         return 0
 
     @staticmethod
-    def print_hello():
-        print('Hello World')
+    def hello():
+        print('Hello Friend.')
