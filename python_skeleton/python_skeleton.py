@@ -7,4 +7,4 @@ class PythonSkeleton:
 
     @staticmethod
     def hello():
-        print('Hello Friend.')
+        print('Hello friend.')
