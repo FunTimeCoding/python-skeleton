@@ -29,4 +29,5 @@ git mv tests/test_python_skeleton.py "tests/test_${UNDERSCORE}.py"
 git mv python_skeleton/python_skeleton.py "python_skeleton/${UNDERSCORE}.py"
 git mv python_skeleton "${UNDERSCORE}"
 git mv bin/ps "bin/${INITIALS}"
+rm init-project.sh sync-project.sh
 echo "Done. Files were edited and moved using git. Review those changes."
