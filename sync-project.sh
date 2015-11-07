@@ -19,10 +19,11 @@ if [ ! -d "${TARGET_PROJECT}" ]; then
     exit 1
 fi
 
-cp README.md "${TARGET_PROJECT}"
-cp LICENSE "${TARGET_PROJECT}"
+cp *.md "${TARGET_PROJECT}"
 cp *.sh "${TARGET_PROJECT}"
 cp sonar-project.properties "${TARGET_PROJECT}"
+cp setup.py "${TARGET_PROJECT}"
+cp requirements.txt "${TARGET_PROJECT}"
 cp .coveragerc "${TARGET_PROJECT}"
 cp .gitignore "${TARGET_PROJECT}"
 cp .pylintrc "${TARGET_PROJECT}"
