@@ -20,7 +20,7 @@ GitLab => Gitlab
 
 ### Dash Convention
 
-Lower case everything, words seperated by dashes.
+Lower case everything, words separated by dashes.
 
 ```
 Dash Convention, dash convention => dash-convention
