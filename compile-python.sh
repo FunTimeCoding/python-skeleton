@@ -14,31 +14,33 @@ if [ ! "${USER_ID}" = "0" ]; then
     fi
 fi
 
-VERSION=3.4.3
-NAME=Python-${VERSION}
-FILE=${NAME}.tgz
-cd /tmp
+VERSION="3.5.0"
+NAME="Python-${VERSION}"
+FILE="${NAME}.tgz"
+TEMPORARY_DIRECTORY="/tmp/${NAME}"
+TEMPORARY_FILE="/tmp/${FILE}"
+cd /tmp || exit 1
 
-if [ ! -f "${FILE}" ]; then
-    wget https://www.python.org/ftp/python/${VERSION}/${FILE}
+if [ ! -f "${TEMPORARY_FILE}" ]; then
+    wget "https://www.python.org/ftp/python/${VERSION}/${FILE}"
 fi
 
-if [ ! -d "${NAME}" ]; then
-    tar -zxf /tmp/${FILE}
+if [ ! -d "${TEMPORARY_DIRECTORY}" ]; then
+    tar -zxf "${TEMPORARY_FILE}"
 fi
 
-PREFIX=/usr/local/opt/python-${VERSION}
+PREFIX="/usr/local/opt/python-${VERSION}"
 
 if [ ! -d "${PREFIX}" ]; then
-    cd "${NAME}"
-    ./configure --prefix=${PREFIX}
+    cd "${TEMPORARY_DIRECTORY}" || exit 1
+    ./configure --prefix="${PREFIX}" --without-ensurepip
     make
     make install
 fi
 
 if [ "${1}" = "--clean" ]; then
-    rm /tmp/${FILE}
-    rm -rf /tmp/${NAME}
+    rm "${TEMPORARY_FILE}"
+    rm -rf "${TEMPORARY_DIRECTORY}"
 fi
 
-echo "Done."
+echo "Python 3 script done."

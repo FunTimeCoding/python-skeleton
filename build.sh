@@ -42,7 +42,7 @@ done
 
 if [ "${WORKSPACE}" = "" ]; then
     DIR=$(dirname "${0}")
-    SCRIPT_DIR=$(cd "${DIR}"; pwd)
+    SCRIPT_DIR=$(cd "${DIR}" || exit 1; pwd)
     WORKSPACE="${SCRIPT_DIR}"
 fi
 
@@ -74,6 +74,7 @@ if [ ! -d "${PYVENV_HOME}" ]; then
 fi
 
 echo "Installing requirements."
+# shellcheck source=/dev/null
 . "${PYVENV_HOME}/bin/activate"
 pip3 install --upgrade pip
 pip3 install --upgrade -r "${WORKSPACE}/requirements.txt" | tee build/log/pip.log

@@ -19,8 +19,8 @@ if [ ! -d "${TARGET_PROJECT}" ]; then
     exit 1
 fi
 
-cp *.md "${TARGET_PROJECT}"
-cp *.sh "${TARGET_PROJECT}"
+cp ./*.md "${TARGET_PROJECT}"
+cp ./*.sh "${TARGET_PROJECT}"
 cp sonar-project.properties "${TARGET_PROJECT}"
 cp setup.py "${TARGET_PROJECT}"
 cp requirements.txt "${TARGET_PROJECT}"

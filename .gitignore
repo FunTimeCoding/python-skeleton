@@ -3,4 +3,5 @@
 .coverage
 .pyvenv
 .cache
+.tox
 build
