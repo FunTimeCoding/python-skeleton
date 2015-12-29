@@ -10,9 +10,9 @@ if [ "${CAMEL}" = "" ]; then
     exit 1
 fi
 
-OS=$(uname)
+OPERATING_SYSTEM=$(uname)
 
-if [ "${OS}" = "Darwin" ]; then
+if [ "${OPERATING_SYSTEM}" = "Darwin" ]; then
     SED="gsed"
 else
     SED="sed"
