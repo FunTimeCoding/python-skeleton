@@ -24,7 +24,7 @@ UNDERSCORE=$(echo "${DASH}" | ${SED} -E 's/-/_/g')
 echo "DASH: ${DASH}"
 echo "INITIALS: ${INITIALS}"
 echo "UNDERSCORE: ${UNDERSCORE}"
-find -E . -type f ! -regex '^.*/(build|\.git|\.idea|\.pyvenv)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/bin\/ps/bin\/${5}/g" ${6}' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
+find -E . -type f ! -regex '^.*/(build|\.git|\.idea|\.pyvenv|\.tox|__pycache__)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/bin\/ps/bin\/${5}/g" ${6}' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
 git mv tests/test_python_skeleton.py "tests/test_${UNDERSCORE}.py"
 git mv python_skeleton/python_skeleton.py "python_skeleton/${UNDERSCORE}.py"
 git mv python_skeleton "${UNDERSCORE}"
