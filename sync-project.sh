@@ -29,10 +29,12 @@ fi
 
 OPERATING_SYSTEM=$(uname)
 
-if [ "${OPERATING_SYSTEM}" = "Darwin" ]; then
-    SED="gsed"
-else
+if [ "${OPERATING_SYSTEM}" = "Linux" ]; then
     SED="sed"
+    FIND="find"
+else
+    SED="gsed"
+    FIND="gfind"
 fi
 
 cp ./*.md "${TARGET_PROJECT}"
@@ -54,5 +56,6 @@ echo "DASH: ${DASH}"
 echo "INITIALS: ${INITIALS}"
 echo "UNDERSCORE: ${UNDERSCORE}"
 cd "${TARGET_PROJECT}" || exit 1
-find -E . -type f ! -regex '^.*/(build|\.git|\.idea|\.pyvenv|\.tox|__pycache__)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/bin\/ps/bin\/${5}/g" ${6}' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
+# shellcheck disable=SC2016
+${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea|\.pyvenv|\.tox|__pycache__)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/bin\/ps/bin\/${5}/g" ${6}' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
 echo "Done. Files were copied to ${TARGET_PROJECT} and modified. Review those changes."

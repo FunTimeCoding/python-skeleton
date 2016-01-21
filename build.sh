@@ -5,11 +5,11 @@ CLEAN=0
 while true; do
     case ${1} in
         -h|--help)
-            echo "Usage: [-h|--help][-v|--verbose][-c|--clean][-w|--workspace WORKSPACE][-p|--pythonhome PYTHONHOME]"
+            echo "Usage: [-h|--help][-v|--debug][-c|--clean][-w|--workspace WORKSPACE][-p|--pythonhome PYTHONHOME]"
 
             exit 0
             ;;
-        -v|--verbose)
+        -v|--debug)
             set -x
             shift
             ;;
@@ -24,11 +24,6 @@ while true; do
         -p|--pythonhome)
             PYTHONHOME="${2-}"
             shift 2
-            ;;
-        --)
-            shift
-
-            break
             ;;
         *)
             if [ ! "${1}" = "" ]; then
