@@ -1,14 +1,9 @@
 #!/bin/sh -e
 
-usage()
-{
-    echo "Usage: ${0} TARGET_PROJECT"
-}
-
 TARGET_PROJECT="${1}"
 
 if [ "${TARGET_PROJECT}" = "" ]; then
-    usage
+    echo "Usage: ${0} TARGET_PROJECT"
 
     exit 1
 fi
