@@ -19,7 +19,7 @@ if [ ! -d "${TARGET_PROJECT}" ]; then
     exit 1
 fi
 
-CAMEL=$(head -n1 "${TARGET_PROJECT}/README.md" | awk '{ print $2 }' | grep -E '^([A-Z][a-z0-9]+){2,}$') || CAMEL=""
+CAMEL=$(head -n1 "${TARGET_PROJECT}"/README.md | awk '{ print $2 }' | grep -E '^([A-Z][a-z0-9]+){2,}$') || CAMEL=""
 
 if [ "${CAMEL}" = "" ]; then
     echo "Could not determine project name."
@@ -30,23 +30,24 @@ fi
 OPERATING_SYSTEM=$(uname)
 
 if [ "${OPERATING_SYSTEM}" = "Linux" ]; then
-    SED="sed"
     FIND="find"
+    SED="sed"
 else
-    SED="gsed"
     FIND="gfind"
+    SED="gsed"
 fi
 
 cp ./*.md "${TARGET_PROJECT}"
 cp ./*.sh "${TARGET_PROJECT}"
+cp tox.ini "${TARGET_PROJECT}"
+cp requirements.txt "${TARGET_PROJECT}"
 cp sonar-project.properties "${TARGET_PROJECT}"
 cp setup.py "${TARGET_PROJECT}"
-cp requirements.txt "${TARGET_PROJECT}"
 cp .coveragerc "${TARGET_PROJECT}"
 cp .gitignore "${TARGET_PROJECT}"
 cp .pylintrc "${TARGET_PROJECT}"
-cp .pytest-ci.ini "${TARGET_PROJECT}"
 cp .pytest.ini "${TARGET_PROJECT}"
+cp .pytest-ci.ini "${TARGET_PROJECT}"
 rm "${TARGET_PROJECT}/init-project.sh"
 rm "${TARGET_PROJECT}/sync-project.sh"
 DASH=$(echo "${CAMEL}" | ${SED} -E 's/([A-Za-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
