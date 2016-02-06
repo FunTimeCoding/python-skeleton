@@ -1,6 +1,19 @@
 # PythonSkeleton
 
+## Usage
+
+This section explains how to use this project.
+
+Run the main entry point program.
+
+```sh
+PYTHONPATH=. bin/ps
+```
+
+
 ## Setup
+
+This section explains how to install this project and how to include it in another.
 
 Install the project from a local clone.
 
@@ -29,11 +42,7 @@ git+ssh://git@github.com/FunTimeCoding/python-skeleton.git#egg=python-skeleton
 
 ## Development
 
-Run the main script without installing the project.
-
-```sh
-PYTHONPATH=. bin/ps
-```
+This section explains how to use scripts that are intended to ease the development of this project.
 
 Install tools on Debian Jessie.
 
