@@ -9,15 +9,15 @@ if [ "${TARGET_PROJECT}" = "" ]; then
 fi
 
 if [ ! -d "${TARGET_PROJECT}" ]; then
-    echo "Target directory does not exist."
+    echo "Target directory ${TARGET_PROJECT} does not exist."
 
     exit 1
 fi
 
-CAMEL=$(head -n1 "${TARGET_PROJECT}"/README.md | awk '{ print $2 }' | grep -E '^([A-Z][a-z0-9]+){2,}$') || CAMEL=""
+CAMEL=$(head -n1 "${TARGET_PROJECT}"/README.md | awk '{ print $2 }' | grep -E '^([A-Z]+[a-z0-9]*){2,}$') || CAMEL=""
 
 if [ "${CAMEL}" = "" ]; then
-    echo "Could not determine the target projects name."
+    echo "Could not determine the projects name in ${TARGET_PROJECT}."
 
     exit 1
 fi
@@ -49,5 +49,5 @@ UNDERSCORE=$(echo "${DASH}" | ${SED} -E 's/-/_/g')
 cd "${TARGET_PROJECT}" || exit 1
 rm init-project.sh sync-project.sh
 # shellcheck disable=SC2016
-${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea|\.pyvenv|\.tox|__pycache__)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/bin\/ps/bin\/${5}/g" ${6}' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
+${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea|\.pyvenv|\.tox|__pycache__)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/bin\/ps/bin\/${5}/g" "${6}"' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
 echo "Done. Files were copied to ${TARGET_PROJECT} and modified. Review those changes."
