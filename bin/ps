@@ -3,13 +3,7 @@ import sys
 
 from python_skeleton.python_skeleton import PythonSkeleton
 
-
-def main():
-    application = PythonSkeleton()
-    return application.run()
-
-
 if __name__ == '__main__':
-    exit_code = main()
-
+    application = PythonSkeleton(sys.argv[1:])
+    exit_code = application.run()
     sys.exit(exit_code)
