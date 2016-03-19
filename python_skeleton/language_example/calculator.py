@@ -1,8 +1,8 @@
 class Calculator:
     @staticmethod
-    def add(augend, addend):
+    def add(augend: int, addend: int) -> int:
         return augend + addend
 
     @staticmethod
-    def subtract(minuend, subtrahend):
+    def subtract(minuend: int, subtrahend: int) -> int:
         return minuend - subtrahend

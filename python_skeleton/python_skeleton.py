@@ -3,11 +3,11 @@ class PythonSkeleton:
         pass
 
     @staticmethod
-    def run():
+    def run() -> int:
         PythonSkeleton.hello()
 
         return 0
 
     @staticmethod
-    def hello():
+    def hello() -> None:
         print('Hello friend.')
