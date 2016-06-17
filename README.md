@@ -13,18 +13,12 @@ PYTHONPATH=. bin/ps
 
 ## Setup
 
-This section explains how to install this project and how to include it in another.
+This section explains how to install and uninstall this project.
 
-Install the project from a local clone.
-
-```sh
-pip3 install --user --editable .
-```
-
-Install the project from GitHub.
+Install the project.
 
 ```sh
-pip3 install git+ssh://git@github.com/FunTimeCoding/python-skeleton.git#egg=python-skeleton
+pip3 install git+https://git@github.com/FunTimeCoding/python-skeleton.git#egg=python-skeleton
 ```
 
 Uninstall the project.
@@ -33,44 +27,26 @@ Uninstall the project.
 pip3 uninstall python-skeleton
 ```
 
-Require this repository in another projects `requirements.txt`.
-
-```
-git+ssh://git@github.com/FunTimeCoding/python-skeleton.git#egg=python-skeleton
-```
-
 
 ## Development
 
-This section explains how to use scripts that are intended to ease the development of this project.
+This section explains commands to help the development of this project.
 
-Install tools on Debian Jessie.
+Install the project from a local clone.
 
 ```sh
-apt-get install shellcheck
+./development-setup.sh
 ```
 
-Install tools on OS X.
+Run tests, style check and metrics.
 
 ```sh
-brew install shellcheck
-```
-
-Install pip requirements.
-
-```sh
-pip3 install --upgrade --user --requirement requirements.txt
-```
-
-Run code style check, metrics and tests.
-
-```sh
+./run-tests.sh
 ./run-style-check.sh
 ./run-metrics.sh
-./run-tests.sh
 ```
 
-Build the project like Jenkins.
+Build the project.
 
 ```sh
 ./build.sh
@@ -79,5 +55,5 @@ Build the project like Jenkins.
 
 ## Skeleton details
 
-* The `tests` directory is not called `test` because that package already exists.
-* Dashes in the project name become underscores in Python.
+* The `tests` directory is not called `test` because there is a package with that name.
+* Dashes in project names become underscores in Python.
