@@ -1,12 +1,14 @@
 class PythonSkeleton:
-    def __init__(self, arguments: list):
+    def __init__(self, arguments: list) -> None:
         pass
 
     @staticmethod
     def run() -> int:
+        exit_code = 0
+
         PythonSkeleton.hello()
 
-        return 0
+        return exit_code
 
     @staticmethod
     def hello() -> None:

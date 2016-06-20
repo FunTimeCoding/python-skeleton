@@ -1,4 +1,6 @@
-pep8
-pylint
-pytest
-pytest-cov
+pep8 # style check
+pylint # style check
+flake8 # style check
+pyenchant # pylint spellcheck plugin
+pytest # test framework
+pytest-cov # pytest coverage plugin

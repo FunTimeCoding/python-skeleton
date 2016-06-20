@@ -8,7 +8,7 @@ fi
 
 CONTINUOUS_INTEGRATION_MODE=false
 
-if [ "${1}" = "--ci-mode" ]; then
+if [ "${1}" = --ci-mode ]; then
     shift
     mkdir -p build/log
     CONTINUOUS_INTEGRATION_MODE=true
@@ -31,13 +31,13 @@ echo
 echo "Running PyLint."
 OPERATING_SYSTEM=$(uname)
 
-if [ "${OPERATING_SYSTEM}" = "Darwin" ]; then
-    FIND="gfind"
+if [ "${OPERATING_SYSTEM}" = Darwin ]; then
+    FIND=gfind
 else
-    FIND="find"
+    FIND=find
 fi
 
-RESULT=$(${FIND} . -type f -name '*.py' -size -4096c -regextype posix-extended ! -regex '^.*/(.pyvenv|.tox|.git)/.*$')
+RESULT=$(${FIND} . -type f -name '*.py' -or -name 'ps' -regextype posix-extended ! -regex '^.*/(.pyvenv|.tox|.git)/.*$')
 RETURN_CODE=0
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then

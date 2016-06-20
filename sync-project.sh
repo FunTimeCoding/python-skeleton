@@ -24,12 +24,12 @@ fi
 
 OPERATING_SYSTEM=$(uname)
 
-if [ "${OPERATING_SYSTEM}" = "Linux" ]; then
-    FIND="find"
-    SED="sed"
+if [ "${OPERATING_SYSTEM}" = Darwin ]; then
+    FIND=gfind
+    SED=gsed
 else
-    FIND="gfind"
-    SED="gsed"
+    FIND=find
+    SED=sed
 fi
 
 cp ./*.md "${TARGET_PROJECT}"
@@ -38,6 +38,7 @@ cp tox.ini "${TARGET_PROJECT}"
 cp requirements.txt "${TARGET_PROJECT}"
 cp sonar-project.properties "${TARGET_PROJECT}"
 cp setup.py "${TARGET_PROJECT}"
+cp custom.dic "${TARGET_PROJECT}"
 cp .coveragerc "${TARGET_PROJECT}"
 cp .gitignore "${TARGET_PROJECT}"
 cp .pylintrc "${TARGET_PROJECT}"
