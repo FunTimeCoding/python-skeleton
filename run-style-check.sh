@@ -49,7 +49,7 @@ else
     pylint --rcfile=.pylintrc ${RESULT} || RETURN_CODE=$?
 fi
 
-if [ ! "${RETURN_CODE}" = "0" ]; then
+if [ ! "${RETURN_CODE}" = 0 ]; then
     echo "Return code: ${RETURN_CODE}"
     echo
 fi
