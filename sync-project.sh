@@ -3,7 +3,7 @@
 TARGET="${1}"
 
 if [ "${TARGET}" = "" ]; then
-    echo "Usage: ${0} TARGET_PROJECT"
+    echo "Usage: ${0} TARGET"
 
     exit 1
 fi
@@ -22,9 +22,9 @@ if [ "${CAMEL}" = "" ]; then
     exit 1
 fi
 
-OPERATING_SYSTEM=$(uname)
+SYSTEM=$(uname)
 
-if [ "${OPERATING_SYSTEM}" = Darwin ]; then
+if [ "${SYSTEM}" = Darwin ]; then
     FIND=gfind
     SED=gsed
 else
