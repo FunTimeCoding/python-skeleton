@@ -16,5 +16,5 @@ done
 pip3 install --upgrade --requirement requirements.txt
 pip3 install --upgrade .
 ./run-style-check.sh --ci-mode
-./run-metrics.sh --ci-mode
+#./run-metrics.sh --ci-mode
 ./run-tests.sh --ci-mode

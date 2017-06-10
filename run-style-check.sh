@@ -50,8 +50,9 @@ else
     fi
 fi
 
+EXCLUDE_FILTER_WITH_INIT="^.*\/((build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox)\/.*|__init__\.py)$"
 # shellcheck disable=SC2016
-EMPTY_FILES=$(${FIND} . -empty -regextype posix-extended ! -regex "${EXCLUDE_FILTER}")
+EMPTY_FILES=$(${FIND} . -empty -regextype posix-extended ! -regex "${EXCLUDE_FILTER_WITH_INIT}")
 
 if [ ! "${EMPTY_FILES}" = "" ]; then
     CONCERN_FOUND=true
@@ -111,15 +112,16 @@ fi
 PYTHON_FILES=$(${FIND} . -type f -regextype posix-extended -regex "${INCLUDE_FILTER}" -and ! -regex "${EXCLUDE_FILTER}")
 RETURN_CODE=0
 # shellcheck disable=SC2086
+PYLINT_OUTPUT=$(pylint ${PYTHON_FILES}) || RETURN_CODE=$?
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
     echo  | tee build/log/pylint.txt
     echo "(NOTICE) Pylint" | tee --append build/log/pylint.txt
-    pylint ${PYTHON_FILES} || RETURN_CODE=$? | tee --append build/log/pylint.txt
+    echo "${PYLINT_OUTPUT}" | tee --append build/log/pylint.txt
 else
     echo
     echo "(NOTICE) Pylint"
-    pylint ${PYTHON_FILES} || RETURN_CODE=$?
+    echo "${PYLINT_OUTPUT}"
 fi
 
 if [ ! "${RETURN_CODE}" = 0 ]; then
