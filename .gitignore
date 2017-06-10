@@ -1,8 +1,8 @@
 build
 .venv
 .tox
+python_skeleton.egg-info
 *.pyc
-*.egg-info
 
 # pytest
 .coverage
