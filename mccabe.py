@@ -6,7 +6,7 @@ from python_utility.command_process import CommandProcess
 def main():
     process = CommandProcess([
         'flake8',
-        '--exclude', '.pyvenv,.git,.idea,.tox',
+        '--exclude', '.venv,.git,.idea,.tox',
         '--verbose',
         '--max-complexity', '5'
     ])
