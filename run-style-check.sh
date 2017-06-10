@@ -107,18 +107,18 @@ else
     fi
 fi
 
-PYTHON_FILES=$(${FIND} . -type f -name '*.py' -or -path '*\/bin\/*' -regextype posix-extended ! -regex "${FILTER}")
+PYTHON_FILES=$(${FIND} . -type f -regextype posix-extended -regex '(.*\/bin\/.*|.*.py$)' -and ! -regex "${FILTER}")
 RETURN_CODE=0
 # shellcheck disable=SC2086
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
     echo  | tee build/log/pylint.txt
     echo "(NOTICE) Pylint" | tee --append build/log/pylint.txt
-    pylint --rcfile=.pylintrc ${PYTHON_FILES} || RETURN_CODE=$? | tee --append build/log/pylint.txt
+    pylint ${PYTHON_FILES} || RETURN_CODE=$? | tee --append build/log/pylint.txt
 else
     echo
     echo "(NOTICE) Pylint"
-    pylint --rcfile=.pylintrc ${PYTHON_FILES} || RETURN_CODE=$?
+    pylint ${PYTHON_FILES} || RETURN_CODE=$?
 fi
 
 if [ ! "${RETURN_CODE}" = 0 ]; then
