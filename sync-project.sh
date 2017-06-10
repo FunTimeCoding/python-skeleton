@@ -33,13 +33,13 @@ else
 fi
 
 cp ./*.md "${TARGET}"
+cp ./*.py "${TARGET}"
 cp ./*.sh "${TARGET}"
-cp tox.ini "${TARGET}"
-cp requirements.txt "${TARGET}"
-cp sonar-project.properties "${TARGET}"
-cp setup.py "${TARGET}"
 cp dict/* "${TARGET}/dict"
 cp doc/* "${TARGET}/doc"
+cp requirements.txt "${TARGET}"
+cp sonar-project.properties "${TARGET}"
+cp tox.ini "${TARGET}"
 cp .coveragerc "${TARGET}"
 cp .gitignore "${TARGET}"
 cp .pylintrc "${TARGET}"
