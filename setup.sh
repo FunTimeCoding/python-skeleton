@@ -18,6 +18,12 @@ if [ "${SYSTEM}" = Linux ]; then
     if [ "${FOUND}" = false ]; then
         sudo apt-get --quiet 2 install libenchant-dev
     fi
+
+    dpkg --list | grep --quiet 'ii  hunspell' && FOUND=true || FOUND=false
+
+    if [ "${FOUND}" = false ]; then
+        sudo apt-get --quiet 2 install hunspell
+    fi
 fi
 
 if [ "${USE_VENV}" = true ]; then
