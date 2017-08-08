@@ -6,9 +6,7 @@ from python_skeleton.python_skeleton import PythonSkeleton
 
 
 def main():
-    application = PythonSkeleton(argument_vector[1:])
-    exit_code = application.run()
-    system_exit(exit_code)
+    system_exit(PythonSkeleton(argument_vector[1:]).run())
 
 
 if __name__ == '__main__':
