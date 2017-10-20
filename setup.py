@@ -3,13 +3,34 @@ from setuptools import setup
 
 setup(
     name='python-skeleton',
-    version='0.1',
-    description='Stub description for python-skeleton.',
-    install_requires=[],
-    scripts=['bin/ps'],
-    packages=['python_skeleton'],
+    version='0.1.0',
+    description='Stub description.',
+    url='https://github.com/FunTimeCoding/python-skeleton',
     author='Alexander Reitzel',
     author_email='funtimecoding@gmail.com',
-    url='http://example.org',
-    download_url='http://example.org/python-skeleton.tar.gz'
+    license='MIT',
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: Software Development',
+    ],
+    keywords='development project skeleton',
+    packages=['python_skeleton'],
+    install_requires=[],
+    python_requires='>=3.2',
+    entry_points={
+        'console_scripts': [
+            'ps=python_skeleton.python_skeleton:'
+            'PythonSkeleton.main',
+        ],
+    },
 )

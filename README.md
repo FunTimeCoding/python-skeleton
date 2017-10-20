@@ -24,7 +24,7 @@ This section explains how to use this project.
 Run the main program.
 
 ```sh
-bin/ps
+ps
 ```
 
 
@@ -41,9 +41,9 @@ Install the project from a clone.
 Run tests, style check and metrics.
 
 ```sh
-./run-tests.sh
-./run-style-check.sh
-./run-metrics.sh
+./tests.sh
+./style-check.sh
+./metrics.sh
 ```
 
 Build the project.

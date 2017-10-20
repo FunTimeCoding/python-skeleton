@@ -1,0 +1,5 @@
+#export DH_VERBOSE=1
+export PYBUILD_NAME=python-skeleton
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
