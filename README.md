@@ -2,12 +2,13 @@
 
 ## Setup
 
-This section explains how to install and uninstall this project.
+This section explains how to install and uninstall the project.
 
 Install the project.
 
 ```sh
 pip3 install git+https://git@github.com/FunTimeCoding/python-skeleton.git#egg=python-skeleton
+pip3 install -i https://testpypi.python.org/pypi python-skeleton
 ```
 
 Uninstall the project.
@@ -19,9 +20,9 @@ pip3 uninstall python-skeleton
 
 ## Usage
 
-This section explains how to use this project.
+This section explains how to use the project.
 
-Run the main program.
+Run the program.
 
 ```sh
 ps
@@ -30,24 +31,36 @@ ps
 
 ## Development
 
-This section explains commands to help the development of this project.
+This section explains how to improve the project.
 
-Install the project from a clone.
-
-```sh
-./setup.sh
-```
-
-Run tests, style check and metrics.
-
-```sh
-./tests.sh
-./style-check.sh
-./metrics.sh
-```
-
-Build the project.
+Build the project. This installs dependencies.
 
 ```sh
 ./build.sh
+```
+
+Run tests, style check and spell check.
+
+```sh
+./spell-check.sh
+./style-check.sh
+./tests.sh
+```
+
+Build the package.
+
+```sh
+./package.sh
+```
+
+Install the experimental Debian package.
+
+```sh
+sudo dpkg --install build/python3-python-skeleton_0.1.0-1_all.deb
+```
+
+Show files the package installed.
+
+```sh
+dpkg-query --listfiles python3-python-skeleton
 ```
