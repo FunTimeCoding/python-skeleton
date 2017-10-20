@@ -55,4 +55,4 @@ cd "${TARGET}" || exit 1
 rm init-project.sh sync-project.sh
 mv dict/python-skeleton.dic "dict/${DASH}.dic"
 # shellcheck disable=SC2016
-${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea|\.venv|\.tox|\.vagrant|__pycache__)/.*$' -exec sh -c '${1} --in-place --expression "s/PythonSkeleton/${2}/g" --expression "s/python-skeleton/${3}/g" --expression "s/python_skeleton/${4}/g" --expression "s/bin\/ps/bin\/${5}/g" "${6}"' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
+${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|tmp|\.git|\.idea|\.venv|\.tox|\.cache|\.vagrant|__pycache__|[a-z_]+\.egg-info)/.*$' -exec sh -c '${1} --in-place --expression "s/PythonSkeleton/${2}/g" --expression "s/python-skeleton/${3}/g" --expression "s/python_skeleton/${4}/g" --expression "s/bin\/ps/bin\/${5}/g" "${6}"' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
