@@ -1,9 +1,11 @@
 build
-.venv
-.tox
-python_skeleton.egg-info
-*.pyc
+tmp
+.vagrant
 
-# pytest
+# Python
 .coverage
 .cache
+.venv
+.tox
+*.egg-info
+*.pyc
