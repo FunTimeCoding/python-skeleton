@@ -33,6 +33,12 @@ ps
 
 This section explains how to improve the project.
 
+Configure Git on Windows before cloning. This avoids problems with Vagrant and VirtualBox.
+
+```sh
+git config --global core.autocrlf input
+```
+
 Build the project. This installs dependencies.
 
 ```sh
