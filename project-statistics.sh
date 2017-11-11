@@ -10,18 +10,16 @@ else
     FIND=find
 fi
 
-FILE_COUNT=$(${FIND} . -type f | ${WC} --lines)
-echo "FILE_COUNT: ${FILE_COUNT}"
-
-DIRECTORY_COUNT=$(${FIND} . -type d | ${WC} --lines)
-echo "DIRECTORY_COUNT: ${DIRECTORY_COUNT}"
-
-INCLUDE_FILTER="^.*(\/bin\/.*|\.py)$"
-EXCLUDE_FILTER="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox)\/.*$"
-ALL_CODE=$(${FIND} . -type f -regextype posix-extended -regex "${INCLUDE_FILTER}" -and ! -regex "${EXCLUDE_FILTER}" | xargs cat)
-
-LINE_COUNT=$(echo "${ALL_CODE}" | ${WC} --lines)
-echo "LINE_COUNT: ${LINE_COUNT}"
-
-NON_BLANK_LINE_COUNT=$(echo "${ALL_CODE}" | grep --invert-match --regexp '^$' | ${WC} --lines)
-echo "NON_BLANK_LINE_COUNT: ${NON_BLANK_LINE_COUNT}"
+FILES_EXCLUDE="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox|__pycache__|.*\.egg-info)\/.*$"
+FILES=$(${FIND} . -type f -regextype posix-extended ! -regex "${FILES_EXCLUDE}" | ${WC} --lines)
+DIRECTORIES_EXCLUDE="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox|__pycache__)(\/.*)?$"
+DIRECTORIES=$(${FIND} . -type d -regextype posix-extended ! -regex "${DIRECTORIES_EXCLUDE}" | ${WC} --lines)
+INCLUDE="^.*\.py$"
+CODE_EXCLUDE="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox)\/.*$"
+CODE=$(${FIND} . -type f -regextype posix-extended -regex "${INCLUDE}" -and ! -regex "${CODE_EXCLUDE}" | xargs cat)
+LINES=$(echo "${CODE}" | ${WC} --lines)
+NON_BLANK_LINES=$(echo "${CODE}" | grep --invert-match --regexp '^$' | ${WC} --lines)
+echo "FILES: ${FILES}"
+echo "DIRECTORIES: ${DIRECTORIES}"
+echo "LINES: ${LINES}"
+echo "NON_BLANK_LINES: ${NON_BLANK_LINES}"

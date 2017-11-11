@@ -25,7 +25,7 @@ This section explains how to use the project.
 Run the program.
 
 ```sh
-ps
+pyskel
 ```
 
 
