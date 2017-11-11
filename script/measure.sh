@@ -23,3 +23,18 @@ echo "FILES: ${FILES}"
 echo "DIRECTORIES: ${DIRECTORIES}"
 echo "LINES: ${LINES}"
 echo "NON_BLANK_LINES: ${NON_BLANK_LINES}"
+
+if [ "${1}" = --ci-mode ]; then
+    shift
+    SYSTEM=$(uname)
+
+    if [ "${SYSTEM}" = Darwin ]; then
+        TEE=gtee
+    else
+        TEE=tee
+    fi
+
+    mkdir -p build/log
+    sonar-runner | "${TEE}" build/log/sonar-runner.log
+    rm -rf .sonar
+fi

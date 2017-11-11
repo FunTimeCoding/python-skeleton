@@ -4,14 +4,19 @@
 
 This section explains how to install and uninstall the project.
 
-Install the project.
+Install pip package from GitHub.
 
 ```sh
 pip3 install git+https://git@github.com/FunTimeCoding/python-skeleton.git#egg=python-skeleton
+```
+
+Install pip package from DevPi.
+
+```sh
 pip3 install -i https://testpypi.python.org/pypi python-skeleton
 ```
 
-Uninstall the project.
+Uninstall package.
 
 ```sh
 pip3 uninstall python-skeleton
@@ -42,21 +47,21 @@ git config --global core.autocrlf input
 Build the project. This installs dependencies.
 
 ```sh
-./build.sh
+script/build.sh
 ```
 
-Run tests, style check and spell check.
+Run tests, check style and measure metrics.
 
 ```sh
-./spell-check.sh
-./style-check.sh
-./tests.sh
+script/test.sh
+script/check.sh
+script/measure.sh
 ```
 
 Build the package.
 
 ```sh
-./package.sh
+script/package.sh
 ```
 
 Install the experimental Debian package.
