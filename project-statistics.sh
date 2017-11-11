@@ -10,7 +10,7 @@ else
     FIND=find
 fi
 
-FILES_EXCLUDE="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox|__pycache__|.*\.egg-info)\/.*$"
+FILES_EXCLUDE="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox|__pycache__|[a-z_]+\.egg-info)\/.*$"
 FILES=$(${FIND} . -type f -regextype posix-extended ! -regex "${FILES_EXCLUDE}" | ${WC} --lines)
 DIRECTORIES_EXCLUDE="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox|__pycache__)(\/.*)?$"
 DIRECTORIES=$(${FIND} . -type d -regextype posix-extended ! -regex "${DIRECTORIES_EXCLUDE}" | ${WC} --lines)
