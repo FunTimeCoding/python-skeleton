@@ -6,7 +6,7 @@ class PythonSkeleton:
         pass
 
     @staticmethod
-    def main():
+    def main() -> None:
         system_exit(PythonSkeleton(argument_vector[1:]).run())
 
     def run(self) -> int:
