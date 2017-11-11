@@ -27,7 +27,7 @@ pip3 uninstall python-skeleton
 
 This section explains how to use the project.
 
-Run the program.
+Run program.
 
 ```sh
 pyskel
@@ -44,7 +44,7 @@ Configure Git on Windows before cloning. This avoids problems with Vagrant and V
 git config --global core.autocrlf input
 ```
 
-Build the project. This installs dependencies.
+Build project. This installs dependencies.
 
 ```sh
 script/build.sh
@@ -58,13 +58,13 @@ script/check.sh
 script/measure.sh
 ```
 
-Build the package.
+Build package.
 
 ```sh
 script/package.sh
 ```
 
-Install the experimental Debian package.
+Install Debian package.
 
 ```sh
 sudo dpkg --install build/python3-python-skeleton_0.1.0-1_all.deb
