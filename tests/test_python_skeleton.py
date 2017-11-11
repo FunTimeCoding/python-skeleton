@@ -9,5 +9,5 @@ def test_return_code() -> None:
 def test_flake_command(capsys) -> None:
     mccabe_main()
     output, error = capsys.readouterr()
-    assert '' == error
-    assert '' != output
+    assert output != ''
+    assert error == ''
