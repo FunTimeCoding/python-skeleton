@@ -25,10 +25,8 @@ INITIALS=$(echo "${CAMEL}" | ${SED} 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[
 UNDERSCORE=$(echo "${DASH}" | ${SED} -E 's/-/_/g')
 rm init-project.sh sync-project.sh
 # shellcheck disable=SC2016
-${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|tmp|\.git|\.idea|\.venv|\.tox|\.cache|\.vagrant|__pycache__|[a-z_]+\.egg-info)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/bin\/ps/bin\/${5}/g" "${6}"' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
-git mv bin/ps "bin/${INITIALS}"
-git mv dict/python-skeleton.dic "dict/${DASH}.dic"
+${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|tmp|\.git|\.idea|\.venv|\.tox|\.cache|\.vagrant|__pycache__|[a-z_]+\.egg-info)/.*$' -exec sh -c '${1} -i -e "s/PythonSkeleton/${2}/g" -e "s/python-skeleton/${3}/g" -e "s/python_skeleton/${4}/g" -e "s/pyskel/${5}/g" "${6}"' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
+echo "# Dictionary for project domain language." > "dict/${DASH}.dic"
 git mv python_skeleton/python_skeleton.py "python_skeleton/${UNDERSCORE}.py"
 git mv python_skeleton "${UNDERSCORE}"
 git mv tests/test_python_skeleton.py "tests/test_${UNDERSCORE}.py"
-echo "Done. Files were edited and moved. Review those changes."

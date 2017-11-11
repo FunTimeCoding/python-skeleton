@@ -1,15 +1,19 @@
+from sys import argv as argument_vector, exit as system_exit
+
+
 class PythonSkeleton:
     def __init__(self, arguments: list) -> None:
         pass
 
     @staticmethod
-    def run() -> int:
-        exit_code = 0
+    def main():
+        system_exit(PythonSkeleton(argument_vector[1:]).run())
 
-        PythonSkeleton.hello()
+    def run(self) -> int:
+        exit_code = 0
+        self.hello()
 
         return exit_code
 
-    @staticmethod
-    def hello() -> None:
+    def hello(self) -> None:
         print('Hello friend.')

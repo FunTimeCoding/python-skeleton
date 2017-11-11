@@ -18,13 +18,13 @@ fi
 pip3 install wheel
 pip3 install --requirement requirements.txt
 pip3 install --editable .
-./spell-check.sh --ci-mode
-./style-check.sh --ci-mode
+../spell-check.sh --ci-mode
+../style-check.sh --ci-mode
 #./metrics.sh --ci-mode
 ./tests.sh --ci-mode
-./setup.py bdist_wheel --dist-dir build
+../setup.py bdist_wheel --dist-dir build
 SYSTEM=$(uname)
 
 if [ "${SYSTEM}" = Linux ]; then
-    ./package.sh
+    ../package.sh
 fi

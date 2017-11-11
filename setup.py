@@ -29,7 +29,7 @@ setup(
     python_requires='>=3.2',
     entry_points={
         'console_scripts': [
-            'ps=python_skeleton.python_skeleton:'
+            'pyskel=python_skeleton.python_skeleton:'
             'PythonSkeleton.main',
         ],
     },
