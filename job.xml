@@ -36,7 +36,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./build.sh</command>
+      <command>script/build.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
