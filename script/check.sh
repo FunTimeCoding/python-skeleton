@@ -22,7 +22,7 @@ BLACKLIST=""
 DICTIONARY=en_US
 
 for FILE in ${MARKDOWN_FILES}; do
-    WORDS=$(hunspell -d "${DICTIONARY}" -p "${SCRIPT_DIRECTORY}/dict/python-skeleton.dic" -l "${FILE}" | sort | uniq)
+    WORDS=$(hunspell -d "${DICTIONARY}" -p "${SCRIPT_DIRECTORY}/dictionary/python-skeleton.dic" -l "${FILE}" | sort | uniq)
 
     if [ ! "${WORDS}" = "" ]; then
         echo "${FILE}"
@@ -49,7 +49,7 @@ done
 TEX_FILES=$(find . -name '*.tex')
 
 for FILE in ${TEX_FILES}; do
-    WORDS=$(hunspell -d "${DICTIONARY}" -p "${SCRIPT_DIRECTORY}/dict/python-skeleton.dic" -l -t "${FILE}")
+    WORDS=$(hunspell -d "${DICTIONARY}" -p "${SCRIPT_DIRECTORY}/dictionary/python-skeleton.dic" -l -t "${FILE}")
 
     if [ ! "${WORDS}" = "" ]; then
         echo "${FILE}"
@@ -153,17 +153,17 @@ if [ ! "${SHELLCHECK_IGNORES}" = "" ]; then
     fi
 fi
 
-PEP8_CONCERNS=$(pep8 --exclude=.git,.tox,.venv,__pycache__ --statistics .) || RETURN_CODE=$?
+PYCODESTYLE_CONCERNS=$(pycodestyle --exclude=.git,.tox,.venv,__pycache__ --statistics .) || RETURN_CODE=$?
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
-    echo "${PEP8_CONCERNS}" > build/log/pep8.txt
+    echo "${PYCODESTYLE_CONCERNS}" > build/log/pycodestyle.txt
 else
-    if [ ! "${PEP8_CONCERNS}" = "" ]; then
+    if [ ! "${PYCODESTYLE_CONCERNS}" = "" ]; then
         CONCERN_FOUND=true
         echo
         echo "(WARNING) PEP8 concerns:"
         echo
-        echo "${PEP8_CONCERNS}"
+        echo "${PYCODESTYLE_CONCERNS}"
     fi
 fi
 

@@ -34,16 +34,14 @@ fi
 
 cp ./*.md "${TARGET}"
 cp ./*.py "${TARGET}"
-cp ./*.sh "${TARGET}"
-cp ./*.bat "${TARGET}"
-mkdir -p "${TARGET}/dict"
-cp dict/* "${TARGET}/dict"
+mkdir -p "${TARGET}/dictionary"
+cp dictionary/* "${TARGET}/dictionary"
 mkdir -p "${TARGET}/doc"
 cp doc/* "${TARGET}/doc"
 mkdir -p "${TARGET}/debian"
 cp debian/* "${TARGET}/debian"
 mkdir -p "${TARGET}/script"
-cp script/* "${TARGET}/script"
+cp -R script/* "${TARGET}/script"
 cp requirements.txt "${TARGET}"
 cp Vagrantfile "${TARGET}"
 cp sonar-project.properties "${TARGET}"
@@ -57,7 +55,7 @@ DASH=$(echo "${CAMEL}" | ${SED} --regexp-extended 's/([A-Za-z0-9])([A-Z])/\1-\2/
 INITIALS=$(echo "${CAMEL}" | ${SED} 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]')
 UNDERSCORE=$(echo "${DASH}" | ${SED} --regexp-extended 's/-/_/g')
 cd "${TARGET}" || exit 1
-rm -rf skeleton
-touch "dict/${DASH}.dic"
+rm -rf script/skeleton
+touch "dictionary/${DASH}.dic"
 # shellcheck disable=SC2016
 ${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|tmp|\.git|\.idea|\.venv|\.tox|\.cache|\.vagrant|__pycache__|[a-z_]+\.egg-info)/.*$' -exec sh -c '${1} --in-place --expression "s/PythonSkeleton/${2}/g" --expression "s/python-skeleton/${3}/g" --expression "s/python_skeleton/${4}/g" --expression "s/pyskel/${5}/g" "${6}"' '_' "${SED}" "${CAMEL}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;

@@ -15,5 +15,6 @@ class PythonSkeleton:
 
         return exit_code
 
-    def hello(self) -> None:
+    @staticmethod
+    def hello() -> None:
         print('Hello friend.')
