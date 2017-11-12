@@ -34,10 +34,8 @@ fi
 
 cp ./*.md "${TARGET}"
 cp ./*.py "${TARGET}"
-mkdir -p "${TARGET}/dictionary"
-cp dictionary/* "${TARGET}/dictionary"
-mkdir -p "${TARGET}/doc"
-cp doc/* "${TARGET}/doc"
+mkdir -p "${TARGET}/documentation"
+cp -R documentation/* "${TARGET}/documentation"
 mkdir -p "${TARGET}/debian"
 cp debian/* "${TARGET}/debian"
 mkdir -p "${TARGET}/script"

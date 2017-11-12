@@ -15,14 +15,12 @@ if [ "${1}" = --ci-mode ]; then
     CONTINUOUS_INTEGRATION_MODE=true
 fi
 
-DIRECTORY=$(dirname "${0}")
-SCRIPT_DIRECTORY=$(cd "${DIRECTORY}" || exit 1; pwd)
 MARKDOWN_FILES=$(find . -name '*.md')
 BLACKLIST=""
 DICTIONARY=en_US
 
 for FILE in ${MARKDOWN_FILES}; do
-    WORDS=$(hunspell -d "${DICTIONARY}" -p "${SCRIPT_DIRECTORY}/dictionary/python-skeleton.dic" -l "${FILE}" | sort | uniq)
+    WORDS=$(hunspell -d "${DICTIONARY}" -p documentation/dictionary/python-skeleton.dic -l "${FILE}" | sort | uniq)
 
     if [ ! "${WORDS}" = "" ]; then
         echo "${FILE}"
@@ -49,7 +47,7 @@ done
 TEX_FILES=$(find . -name '*.tex')
 
 for FILE in ${TEX_FILES}; do
-    WORDS=$(hunspell -d "${DICTIONARY}" -p "${SCRIPT_DIRECTORY}/dictionary/python-skeleton.dic" -l -t "${FILE}")
+    WORDS=$(hunspell -d "${DICTIONARY}" -p documentation/dictionary/python-skeleton.dic -l -t "${FILE}")
 
     if [ ! "${WORDS}" = "" ]; then
         echo "${FILE}"
