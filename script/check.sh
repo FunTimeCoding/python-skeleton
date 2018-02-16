@@ -192,10 +192,8 @@ if [ ! "${RETURN_CODE}" = 0 ]; then
 fi
 
 if [ "${CONCERN_FOUND}" = true ]; then
-    if [ "${CONTINUOUS_INTEGRATION_MODE}" = false ]; then
-        echo
-        echo "Concern(s) of category WARNING found." >&2
-    fi
+    echo
+    echo "Concern(s) of category WARNING found." >&2
 
     exit 2
 fi
