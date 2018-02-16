@@ -80,13 +80,13 @@ done
 SYSTEM=$(uname)
 
 if [ "${SYSTEM}" = Darwin ]; then
-    FIND=gfind
+    FIND='gfind'
 else
-    FIND=find
+    FIND='find'
 fi
 
-INCLUDE_FILTER="^.*(\/bin\/[a-z]*|\.py)$"
-EXCLUDE_FILTER="^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox)\/.*$"
+INCLUDE_FILTER='^.*(\/bin\/[a-z]*|\.py)$'
+EXCLUDE_FILTER='^.*\/(build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox)\/.*$'
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
     FILES=$(${FIND} . -name '*.sh' -regextype posix-extended ! -regex "${EXCLUDE_FILTER}" -printf '%P\n')
@@ -106,7 +106,7 @@ else
     fi
 fi
 
-EXCLUDE_FILTER_WITH_INIT="^.*\/((build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox)\/.*|__init__\.py)$"
+EXCLUDE_FILTER_WITH_INIT='^.*\/((build|tmp|\.git|\.vagrant|\.idea|\.venv|\.tox)\/.*|__init__\.py)$'
 # shellcheck disable=SC2016
 EMPTY_FILES=$(${FIND} . -empty -regextype posix-extended ! -regex "${EXCLUDE_FILTER_WITH_INIT}")
 
@@ -172,9 +172,9 @@ PYLINT_OUTPUT=$(pylint ${PYTHON_FILES}) || RETURN_CODE=$?
 SYSTEM=$(uname)
 
 if [ "${SYSTEM}" = Darwin ]; then
-    TEE=gtee
+    TEE='gtee'
 else
-    TEE=tee
+    TEE='tee'
 fi
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then

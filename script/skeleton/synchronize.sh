@@ -25,11 +25,11 @@ fi
 SYSTEM=$(uname)
 
 if [ "${SYSTEM}" = Darwin ]; then
-    FIND=gfind
-    SED=gsed
+    FIND='gfind'
+    SED='gsed'
 else
-    FIND=find
-    SED=sed
+    FIND='find'
+    SED='sed'
 fi
 
 cp ./*.md "${TARGET}"

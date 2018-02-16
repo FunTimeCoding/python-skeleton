@@ -12,11 +12,11 @@ fi
 SYSTEM=$(uname)
 
 if [ "${SYSTEM}" = Darwin ]; then
-    SED=gsed
-    FIND=gfind
+    SED='gsed'
+    FIND='gfind'
 else
-    SED=sed
-    FIND=find
+    SED='sed'
+    FIND='find'
 fi
 
 rm -rf script/skeleton
