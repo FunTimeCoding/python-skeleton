@@ -10,7 +10,7 @@ Vcs-Git: https://github.com/FunTimeCoding/python-skeleton.git
 
 Package: python3-python-skeleton
 Section: python
-Architecture: all
+Architecture: amd64
 Depends: ${python3:Depends}, ${misc:Depends}
 Description: stub short description
  Stub long description.
