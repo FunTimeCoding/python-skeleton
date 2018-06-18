@@ -31,7 +31,7 @@ else
 fi
 
 MARKDOWN_FILES=$(${FIND} . -name '*.md')
-BLACKLIST=""
+BLACKLIST=''
 DICTIONARY=en_US
 mkdir -p tmp
 cat documentation/dictionary/*.dic > tmp/combined.dic
@@ -39,7 +39,7 @@ cat documentation/dictionary/*.dic > tmp/combined.dic
 for FILE in ${MARKDOWN_FILES}; do
     WORDS=$(hunspell -d "${DICTIONARY}" -p tmp/combined.dic -l "${FILE}" | sort | uniq)
 
-    if [ ! "${WORDS}" = "" ]; then
+    if [ ! "${WORDS}" = '' ]; then
         echo "${FILE}"
 
         for WORD in ${WORDS}; do
@@ -66,7 +66,7 @@ TEX_FILES=$(${FIND} . -name '*.tex')
 for FILE in ${TEX_FILES}; do
     WORDS=$(hunspell -d "${DICTIONARY}" -p tmp/combined.dic -l -t "${FILE}")
 
-    if [ ! "${WORDS}" = "" ]; then
+    if [ ! "${WORDS}" = '' ]; then
         echo "${FILE}"
 
         for WORD in ${WORDS}; do
@@ -115,7 +115,7 @@ fi
 # shellcheck disable=SC2016
 EMPTY_FILES=$(${FIND} . -regextype posix-extended -type f -empty ! -regex "${EXCLUDE_FILTER_WITH_INIT}")
 
-if [ ! "${EMPTY_FILES}" = "" ]; then
+if [ ! "${EMPTY_FILES}" = '' ]; then
     CONCERN_FOUND=true
 
     if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
@@ -161,7 +161,7 @@ PYCODESTYLE_CONCERNS=$(pycodestyle --exclude=.git,.tox,.venv,__pycache__ --stati
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
     echo "${PYCODESTYLE_CONCERNS}" > build/log/pycodestyle.txt
 else
-    if [ ! "${PYCODESTYLE_CONCERNS}" = "" ]; then
+    if [ ! "${PYCODESTYLE_CONCERNS}" = '' ]; then
         CONCERN_FOUND=true
         echo
         echo "(WARNING) PEP8 concerns:"
