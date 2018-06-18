@@ -4,6 +4,12 @@
 
 This section explains how to install and uninstall the project.
 
+Install project dependencies.
+
+```sh
+script/setup.sh
+```
+
 Install pip package from GitHub.
 
 ```sh
@@ -27,7 +33,7 @@ pip3 uninstall python-skeleton
 
 This section explains how to use the project.
 
-Run program.
+Run the main program.
 
 ```sh
 pyskel
@@ -60,7 +66,7 @@ Run tests, check style and measure metrics.
 
 ```sh
 script/test.sh
-script/check.sh
+script/check.sh [--check]
 script/measure.sh
 ```
 
