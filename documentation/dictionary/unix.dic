@@ -1,6 +1,6 @@
-shellcheck
 OPTIND
 mkdir
+tmp
 sudo
 netmask
 nameservers

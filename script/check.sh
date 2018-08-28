@@ -30,11 +30,16 @@ else
     TEE='tee'
 fi
 
-MARKDOWN_FILES=$(${FIND} . -name '*.md')
+MARKDOWN_FILES=$(${FIND} . -regextype posix-extended -name '*.md' ! -regex "${EXCLUDE_FILTER}" -printf '%P\n')
 BLACKLIST=''
 DICTIONARY=en_US
 mkdir -p tmp
-cat documentation/dictionary/*.dic > tmp/combined.dic
+
+if [ -d documentation/dictionary ]; then
+    cat documentation/dictionary/*.dic > tmp/combined.dic
+else
+    touch tmp/combined.dic
+fi
 
 for FILE in ${MARKDOWN_FILES}; do
     WORDS=$(hunspell -d "${DICTIONARY}" -p tmp/combined.dic -l "${FILE}" | sort | uniq)
@@ -61,7 +66,7 @@ for FILE in ${MARKDOWN_FILES}; do
     fi
 done
 
-TEX_FILES=$(${FIND} . -name '*.tex')
+TEX_FILES=$(${FIND} . -regextype posix-extended -name '*.tex' ! -regex "${EXCLUDE_FILTER}" -printf '%P\n')
 
 for FILE in ${TEX_FILES}; do
     WORDS=$(hunspell -d "${DICTIONARY}" -p tmp/combined.dic -l -t "${FILE}")

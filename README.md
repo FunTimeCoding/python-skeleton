@@ -62,7 +62,7 @@ Create the development virtual machine on Windows.
 script\vagrant\create.bat
 ```
 
-Run tests, check style and measure metrics.
+Run tests, style check and metrics.
 
 ```sh
 script/test.sh

@@ -27,3 +27,6 @@ SYSTEM=$(uname)
 if [ "${SYSTEM}" = Linux ]; then
     script/package.sh
 fi
+
+# TODO: Finish implementation, then uncomment.
+#script/docker/build.sh
