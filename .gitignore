@@ -3,6 +3,7 @@ tmp
 .vagrant
 
 # Python
+dist
 .coverage
 .cache
 .venv
