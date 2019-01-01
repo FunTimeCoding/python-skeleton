@@ -1,6 +1,11 @@
 build
 tmp
 .vagrant
+debian/files
+debian/debhelper-build-stamp
+debian/python-skeleton
+debian/python-skeleton.substvars
+documentation/man/*.1
 
 # Python
 dist

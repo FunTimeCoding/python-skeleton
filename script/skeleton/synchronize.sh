@@ -3,7 +3,7 @@
 DIRECTORY=$(dirname "${0}")
 SCRIPT_DIRECTORY=$(cd "${DIRECTORY}" || exit 1; pwd)
 # shellcheck source=/dev/null
-. "${SCRIPT_DIRECTORY}/../../lib/common.sh"
+. "${SCRIPT_DIRECTORY}/../../lib/project.sh"
 TARGET="${1}"
 
 if [ "${TARGET}" = '' ]; then
@@ -41,14 +41,14 @@ mkdir -p "${TARGET}/documentation"
 cp -R documentation/* "${TARGET}/documentation"
 mkdir -p "${TARGET}/script"
 cp -R script/* "${TARGET}/script"
+mkdir -p "${TARGET}/debian"
+cp -R debian/* "${TARGET}/debian"
 mkdir -p "${TARGET}/lib"
-cp lib/common.sh "${TARGET}/lib"
+cp lib/project.sh "${TARGET}/lib"
 cp .gitignore "${TARGET}"
 cp Vagrantfile "${TARGET}"
 cp Dockerfile "${TARGET}"
 cp ./*.py "${TARGET}"
-mkdir -p "${TARGET}/debian"
-cp debian/* "${TARGET}/debian"
 cp requirements.txt "${TARGET}"
 cp sonar-project.properties "${TARGET}"
 cp tox.ini "${TARGET}"

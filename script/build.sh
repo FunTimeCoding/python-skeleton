@@ -40,5 +40,5 @@ if [ "${GIT_BRANCH}" = master ]; then
     fi
 fi
 
-# TODO: Finish implementation, then uncomment.
+# TODO: Finish implementation.
 #script/docker/build.sh
