@@ -6,5 +6,8 @@ shellcheck
 netcat
 Gmail
 Ansible
+devops
+AnsibleVagrantRootUser
+AnsibleVagrantUser
 GreenShiningLake
 mccabe

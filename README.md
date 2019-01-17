@@ -65,9 +65,9 @@ script\vagrant\create.bat
 Run tests, style check and metrics.
 
 ```sh
-script/test.sh [--ci-mode]
-script/check.sh [--ci-mode]
-script/measure.sh [--ci-mode]
+script/test.sh [--help]
+script/check.sh [--help]
+script/measure.sh [--help]
 ```
 
 Build project.
