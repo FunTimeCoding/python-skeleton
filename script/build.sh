@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 rm -rf build
-id -u vagrant 2> /dev/null && VAGRANT_ENVIRONMENT='true' || VAGRANT_ENVIRONMENT='false'
+id -u vagrant 2>&1 > /dev/null && VAGRANT_ENVIRONMENT='true' || VAGRANT_ENVIRONMENT='false'
 
 if [ "${VAGRANT_ENVIRONMENT}" = true ]; then
     VIRTUAL_ENVIRONMENT_PATH='/home/vagrant/venv'
