@@ -1,6 +1,7 @@
 OPTIND
 mkdir
 tmp
+uname
 sudo
 netmask
 nameservers

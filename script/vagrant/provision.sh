@@ -1,4 +1,12 @@
 #!/bin/sh -e
 
 export DEBIAN_FRONTEND=noninteractive
-apt-get --quiet 2 install neovim multitail htop git tree twine build-essential devscripts python3-dev python3-venv libenchant-dev hunspell shellcheck python3-all
+CODENAME=$(lsb_release --codename --short)
+
+if [ "${CODENAME}" = jessie ]; then
+    echo Europe/Berlin > /etc/timezone
+    dpkg-reconfigure --frontend noninteractive tzdata
+    apt-get --quiet 2 install vim multitail htop tree git
+elif [ "${CODENAME}" = stretch ]; then
+    apt-get --quiet 2 install neovim multitail htop tree git shellcheck hunspell devscripts ruby-ronn twine build-essential python3-dev python3-venv libenchant-dev python3-all
+fi

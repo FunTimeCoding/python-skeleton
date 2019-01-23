@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 rm -rf build
-id -u vagrant > /dev/null && VAGRANT_ENVIRONMENT='true' || VAGRANT_ENVIRONMENT='false'
+id -u vagrant 2>&1 > /dev/null && VAGRANT_ENVIRONMENT='true' || VAGRANT_ENVIRONMENT='false'
 
 if [ "${VAGRANT_ENVIRONMENT}" = true ]; then
     VIRTUAL_ENVIRONMENT_PATH='/home/vagrant/venv'
@@ -40,5 +40,5 @@ if [ "${GIT_BRANCH}" = master ]; then
     fi
 fi
 
-# TODO: Finish implementation, then uncomment.
+# TODO: Finish implementation.
 #script/docker/build.sh
