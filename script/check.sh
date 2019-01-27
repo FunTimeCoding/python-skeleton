@@ -25,10 +25,12 @@ SYSTEM=$(uname)
 if [ "${SYSTEM}" = Darwin ]; then
     FIND='gfind'
     UNIQ='guniq'
+    SED='gsed'
     TEE='gtee'
 else
     FIND='find'
     UNIQ='uniq'
+    SED='sed'
     TEE='tee'
 fi
 
@@ -149,7 +151,7 @@ if [ ! "${TO_DOS}" = '' ]; then
     fi
 fi
 
-DUPLICATE_WORDS=$(cat documentation/dictionary/** | sort | ${UNIQ} -cd)
+DUPLICATE_WORDS=$(cat documentation/dictionary/** | ${SED} '/^$/d' | sort | ${UNIQ} -cd)
 
 if [ ! "${DUPLICATE_WORDS}" = '' ]; then
     CONCERN_FOUND=true
@@ -159,7 +161,6 @@ if [ ! "${DUPLICATE_WORDS}" = '' ]; then
     else
         echo
         echo "(WARNING) Duplicate words:"
-        echo
         echo "${DUPLICATE_WORDS}"
     fi
 fi

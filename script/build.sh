@@ -29,17 +29,6 @@ if [ "${SYSTEM}" = Linux ]; then
     script/debian/package.sh
 fi
 
-if [ "${GIT_BRANCH}" = '' ]; then
-    GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-fi
-
-if [ "${GIT_BRANCH}" = master ]; then
-    script/python/publish.sh
-
-    if [ "${SYSTEM}" = Linux ]; then
-        script/debian/publish.sh
-    fi
-fi
-
+script/publish.sh --ci-mode
 # TODO: Finish implementation.
 #script/docker/build.sh
