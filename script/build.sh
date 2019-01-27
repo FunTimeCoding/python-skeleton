@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 rm -rf build
-id -u vagrant 2>&1 > /dev/null && VAGRANT_ENVIRONMENT='true' || VAGRANT_ENVIRONMENT='false'
+id -u vagrant > /dev/null 2>&1 && VAGRANT_ENVIRONMENT='true' || VAGRANT_ENVIRONMENT='false'
 
 if [ "${VAGRANT_ENVIRONMENT}" = true ]; then
     VIRTUAL_ENVIRONMENT_PATH='/home/vagrant/venv'
@@ -15,6 +15,7 @@ fi
 
 # shellcheck source=/dev/null
 . "${VIRTUAL_ENVIRONMENT_PATH}/bin/activate"
+pip3 install --upgrade pip
 pip3 install wheel
 pip3 install --requirement requirements.txt
 pip3 install --editable .

@@ -24,9 +24,11 @@ SYSTEM=$(uname)
 
 if [ "${SYSTEM}" = Darwin ]; then
     FIND='gfind'
+    UNIQ='guniq'
     TEE='gtee'
 else
     FIND='find'
+    UNIQ='uniq'
     TEE='tee'
 fi
 
@@ -42,7 +44,7 @@ else
 fi
 
 for FILE in ${MARKDOWN_FILES}; do
-    WORDS=$(hunspell -d "${DICTIONARY}" -p tmp/combined.dic -l "${FILE}" | sort | uniq)
+    WORDS=$(hunspell -d "${DICTIONARY}" -p tmp/combined.dic -l "${FILE}" | sort | ${UNIQ})
 
     if [ ! "${WORDS}" = '' ]; then
         echo "${FILE}"
@@ -147,7 +149,7 @@ if [ ! "${TO_DOS}" = '' ]; then
     fi
 fi
 
-DUPLICATE_WORDS=$(cat documentation/dictionary/** | sort | uniq -cd)
+DUPLICATE_WORDS=$(cat documentation/dictionary/** | sort | ${UNIQ} -cd)
 
 if [ ! "${DUPLICATE_WORDS}" = '' ]; then
     CONCERN_FOUND=true
