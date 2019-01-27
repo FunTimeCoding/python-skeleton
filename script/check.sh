@@ -25,9 +25,11 @@ SYSTEM=$(uname)
 if [ "${SYSTEM}" = Darwin ]; then
     FIND='gfind'
     UNIQ='guniq'
+    TEE='gtee'
 else
     FIND='find'
     UNIQ='uniq'
+    TEE='tee'
 fi
 
 MARKDOWN_FILES=$(${FIND} . -regextype posix-extended -name '*.md' ! -regex "${EXCLUDE_FILTER}" -printf '%P\n')
