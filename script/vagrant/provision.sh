@@ -9,4 +9,6 @@ if [ "${CODENAME}" = jessie ]; then
     apt-get --quiet 2 install vim multitail htop tree git
 elif [ "${CODENAME}" = stretch ]; then
     apt-get --quiet 2 install neovim multitail htop tree git shellcheck hunspell devscripts ruby-ronn twine build-essential python3-dev python3-venv libenchant-dev python3-all
+elif [ "${CODENAME}" = buster ]; then
+    apt-get --quiet 2 install neovim multitail htop tree git shellcheck hunspell devscripts ruby-ronn
 fi
