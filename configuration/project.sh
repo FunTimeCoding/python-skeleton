@@ -56,7 +56,7 @@ export EXCLUDE_FILTER
 # spec: ruby
 # PROJECT_NAME_UNDERSCORE: python
 # TODO: Test and expand this through all skeleton projects.
-INCLUDE_FILTER="^\.\/((src|test|tests|spec|lib|debian|configuration|documentation|test|script\/skeleton|${PROJECT_NAME_UNDERSCORE})\/.*|\.gitignore|Vagrantfile|Dockerfile|README.md|package\.json|sonar-project\.properties|web\/index\.html|composer\.json)$"
+INCLUDE_FILTER="^\.\/((src|test|tests|spec|lib|debian|configuration|documentation|test|script\/skeleton|${PROJECT_NAME_UNDERSCORE})\/.*|\.gitignore|Vagrantfile|Dockerfile|README.md|package\.json|sonar-project\.properties|web\/index\.html|composer\.json|setup\.py)$"
 export INCLUDE_FILTER
 INCLUDE_STILL_FILTER='^.*\/__pycache__\/.*$'
 export INCLUDE_STILL_FILTER
