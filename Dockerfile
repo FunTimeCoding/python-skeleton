@@ -4,4 +4,4 @@ ADD script/docker/provision.sh /root/provision.sh
 RUN chmod +x /root/provision.sh
 RUN /root/provision.sh
 ADD . /python-skeleton
-ENTRYPOINT ["/python-skeleton/bin/ps"]
+ENTRYPOINT ["/python-skeleton/bin/pyskel"]

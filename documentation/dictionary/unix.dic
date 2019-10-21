@@ -4,6 +4,7 @@ tmp
 uname
 sudo
 uniq
+sshd
 netmask
 nameservers
 DHCP

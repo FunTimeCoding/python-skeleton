@@ -26,12 +26,10 @@ if [ "${SYSTEM}" = Darwin ]; then
     FIND='gfind'
     UNIQ='guniq'
     SED='gsed'
-    TEE='gtee'
 else
     FIND='find'
     UNIQ='uniq'
     SED='sed'
-    TEE='tee'
 fi
 
 MARKDOWN_FILES=$(${FIND} . -regextype posix-extended -name '*.md' -regex "${INCLUDE_FILTER}" -printf '%P\n')
@@ -150,31 +148,28 @@ fi
 
 PYCODESTYLE_CONCERNS=$(pycodestyle --exclude=.git,.tox,.venv,__pycache__ --statistics .) || true
 
+if [ ! "${PYCODESTYLE_CONCERNS}" = '' ]; then
+    CONCERN_FOUND=true
+    echo
+    echo "[WARNING] PEP8 concerns:"
+    echo
+    echo "${PYCODESTYLE_CONCERNS}"
+fi
+
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
     echo "${PYCODESTYLE_CONCERNS}" > build/log/pycodestyle.txt
-else
-    if [ ! "${PYCODESTYLE_CONCERNS}" = '' ]; then
-        CONCERN_FOUND=true
-        echo
-        echo "(WARNING) PEP8 concerns:"
-        echo
-        echo "${PYCODESTYLE_CONCERNS}"
-    fi
 fi
 
 PYTHON_FILES=$(${FIND} . -regextype posix-extended -type f -name '*.py' -regex "${INCLUDE_FILTER}" ! -regex "${INCLUDE_STILL_FILTER}")
 RETURN_CODE=0
 # shellcheck disable=SC2086
 PYLINT_OUTPUT=$(pylint ${PYTHON_FILES}) || RETURN_CODE=$?
+echo
+echo "[NOTICE] Pylint report:"
+echo "${PYLINT_OUTPUT}"
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
-    echo | "${TEE}" build/log/pylint.txt
-    echo "(NOTICE) Pylint" | "${TEE}" --append build/log/pylint.txt
-    echo "${PYLINT_OUTPUT}" | "${TEE}" --append build/log/pylint.txt
-else
-    echo
-    echo "(NOTICE) Pylint"
-    echo "${PYLINT_OUTPUT}"
+    echo "${PYLINT_OUTPUT}" > build/log/pylint.txt
 fi
 
 if [ ! "${RETURN_CODE}" = 0 ]; then

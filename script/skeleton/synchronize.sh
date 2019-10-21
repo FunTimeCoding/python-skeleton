@@ -73,4 +73,4 @@ UNDERSCORE=$(echo "${DASH}" | ${SED} --regexp-extended 's/-/_/g')
 #${FIND} . -regextype posix-extended -type f ! -regex "${EXCLUDE_FILTER}" -exec sh -c '${1} --in-place --expression "s/PythonSkeleton/${2}/g" --expression "s/python-skeleton/${3}/g" --expression "s/python_skeleton/${4}/g" "${5}"' '_' "${SED}" "${NAME}" "${DASH}" "${UNDERSCORE}" '{}' \;
 ${FIND} . -regextype posix-extended -type f -regex "${INCLUDE_FILTER}" -exec sh -c '${1} --in-place --expression "s/PythonSkeleton/${2}/g" --expression "s/python-skeleton/${3}/g" --expression "s/python_skeleton/${4}/g" "${5}"' '_' "${SED}" "${NAME}" "${DASH}" "${UNDERSCORE}" '{}' \;
 # shellcheck disable=SC1117
-${SED} --in-place --expression "s/bin\/ps/bin\/${INITIALS}/g" README.md Dockerfile
+${SED} --in-place --expression "s/bin\/pyskel/bin\/${INITIALS}/g" README.md Dockerfile

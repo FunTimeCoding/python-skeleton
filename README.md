@@ -32,7 +32,7 @@ pip3 uninstall python-skeleton
 Run the main program:
 
 ```sh
-bin/ps
+bin/pyskel
 ```
 
 Run the main program inside the container:
@@ -91,5 +91,5 @@ sudo dpkg --install build/python3-python-skeleton_0.1.0-1_all.deb
 Show files the package installed:
 
 ```sh
-dpkg-query --listfiles python3-python-skeleton
+dpkg-query --listfiles python-skeleton
 ```
