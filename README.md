@@ -91,5 +91,5 @@ sudo dpkg --install build/python3-python-skeleton_0.1.0-1_all.deb
 Show files the package installed:
 
 ```sh
-dpkg-query --listfiles python-skeleton
+dpkg-query --listfiles python3-python-skeleton
 ```
