@@ -173,7 +173,27 @@ if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
 fi
 
 if [ ! "${RETURN_CODE}" = 0 ]; then
+    echo
     echo "Pylint return code: ${RETURN_CODE}"
+fi
+
+RETURN_CODE=0
+MYPY_OUTPUT=$(mypy .) || RETURN_CODE=$?
+
+if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
+    echo "${MYPY_OUTPUT}" > build/log/mypy.txt
+fi
+
+if [ ! "${RETURN_CODE}" = 0 ]; then
+    if [ ! "${MYPY_OUTPUT}" = '' ]; then
+        CONCERN_FOUND=true
+        echo
+        echo "[WARNING] Mypy concerns:"
+        echo
+        echo "${MYPY_OUTPUT}"
+        echo
+        echo "Mypy return code: ${RETURN_CODE}"
+    fi
 fi
 
 if [ "${CONCERN_FOUND}" = true ]; then
