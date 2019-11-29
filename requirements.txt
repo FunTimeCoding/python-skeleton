@@ -6,3 +6,5 @@ pytest # test framework
 pytest-cov # pytest coverage plugin
 mccabe # static analysis
 pyyaml # YAML parser
+py-spy # sampling profiler
+mypy # type checker
