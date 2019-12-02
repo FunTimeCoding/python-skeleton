@@ -1,20 +1,19 @@
-build
-tmp
-.vagrant
-debian/files
-debian/debhelper-build-stamp
-debian/python-skeleton
-debian/python-skeleton.substvars
-documentation/man/*.1
-.scannerwork
+/build
+/tmp
+/.vagrant
+/debian/files
+/debian/debhelper-build-stamp
+/debian/python-skeleton
+/debian/python-skeleton.substvars
+/documentation/man/*.1
+/.scannerwork
 
 # Python
-dist
-.coverage
-.cache
-.venv
-.tox
+/dist
+/.coverage
+/.cache
+/.tox
+/.pytest_cache
+/.mypy_cache
 *.egg-info
 *.pyc
-.pytest_cache
-.mypy_cache

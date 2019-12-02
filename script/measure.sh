@@ -51,12 +51,32 @@ if [ "${1}" = --ci-mode ]; then
     if [ -f "${HOME}/.sonar-qube-tools.sh" ]; then
         # shellcheck source=/dev/null
         . "${HOME}/.sonar-qube-tools.sh"
-        sonar-scanner "-Dsonar.projectKey=${PROJECT_NAME_DASH}" -Dsonar.sources=. "-Dsonar.host.url=${SONAR_SERVER}" "-Dsonar.login=${SONAR_TOKEN}" '-Dsonar.exclusions=build/**,tmp/**' | "${TEE}" build/log/sonar-runner.log
+        sonar-scanner "-Dsonar.projectKey=${PROJECT_NAME_DASH}" -Dsonar.sources=. "-Dsonar.host.url=${SONAR_SERVER}" "-Dsonar.login=${SONAR_TOKEN}" | "${TEE}" build/log/sonar-runner.log
     else
         echo "SonarQube configuration missing."
 
         exit 1
     fi
+
+    RESULT_COUNT=0
+
+    for SECOND in $(seq 1 60); do
+        RESULT_COUNT=$(curl --silent --user "${SONAR_TOKEN}:" "${SONAR_SERVER}/api/measures/component_tree?component=${PROJECT_NAME_DASH}&metricKeys=sqale_index" | jq --raw-output '.baseComponent.measures | length')
+
+        if [ ! "${RESULT_COUNT}" = 0 ]; then
+            echo ''
+
+            break
+        fi
+
+        if [ "${SECOND}" = 60 ]; then
+            echo "Timeout reached."
+
+            exit 1
+        else
+            printf .
+        fi
+    done
 
     CONCERN_FOUND=false
     SQALE_INDEX=$(curl --silent --user "${SONAR_TOKEN}:" "${SONAR_SERVER}/api/measures/component_tree?component=${PROJECT_NAME_DASH}&metricKeys=sqale_index" | jq --raw-output '.baseComponent.measures[].value')
