@@ -146,7 +146,7 @@ if [ ! "${SHELLCHECK_DISABLES}" = '' ]; then
     echo "${SHELLCHECK_DISABLES}"
 fi
 
-PYCODESTYLE_CONCERNS=$(pycodestyle --exclude=.git,.tox,.venv,__pycache__ --statistics .) || true
+PYCODESTYLE_CONCERNS=$(pycodestyle --exclude=.git,.tox,.venv,__pycache__ --statistics . 2>&1) || true
 
 if [ ! "${PYCODESTYLE_CONCERNS}" = '' ]; then
     CONCERN_FOUND=true
@@ -178,7 +178,7 @@ if [ ! "${RETURN_CODE}" = 0 ]; then
 fi
 
 RETURN_CODE=0
-MYPY_OUTPUT=$(mypy .) || RETURN_CODE=$?
+MYPY_OUTPUT=$(mypy --ignore-missing-imports .) || RETURN_CODE=$?
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
     echo "${MYPY_OUTPUT}" > build/log/mypy.txt

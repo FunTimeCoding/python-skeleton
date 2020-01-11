@@ -1,5 +1,5 @@
-from python_skeleton.python_skeleton import PythonSkeleton
 from mccabe import main as mccabe_main
+from python_skeleton.python_skeleton import PythonSkeleton
 
 
 def test_return_code(capsys) -> None:

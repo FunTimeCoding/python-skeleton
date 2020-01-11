@@ -11,6 +11,9 @@ contextlib
 asctime
 levelname
 pycodestyle
+DevPi
+pip3
+python3
 
 # pytest
 pytest
