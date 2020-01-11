@@ -1,20 +1,13 @@
 #!/bin/sh -e
 
 rm -rf build
-id -u vagrant > /dev/null 2>&1 && VAGRANT_ENVIRONMENT='true' || VAGRANT_ENVIRONMENT='false'
 
-if [ "${VAGRANT_ENVIRONMENT}" = true ]; then
-    VIRTUAL_ENVIRONMENT_PATH='/home/vagrant/venv'
-else
-    VIRTUAL_ENVIRONMENT_PATH='.venv'
-fi
-
-if [ ! -d "${VIRTUAL_ENVIRONMENT_PATH}" ]; then
-    python3 -m venv "${VIRTUAL_ENVIRONMENT_PATH}"
+if [ ! -d "${HOME}/venv" ]; then
+    python3 -m venv "${HOME}/venv"
 fi
 
 # shellcheck source=/dev/null
-. "${VIRTUAL_ENVIRONMENT_PATH}/bin/activate"
+. "${HOME}/venv/bin/activate"
 pip3 install --upgrade pip
 pip3 install wheel
 pip3 install --requirement requirements.txt
