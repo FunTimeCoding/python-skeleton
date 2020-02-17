@@ -15,29 +15,7 @@ if [ "${1}" = --help ]; then
 fi
 
 if [ "${1}" = --ci-mode ]; then
-    shift
-    mkdir -p build/log
-    CONTINUOUS_INTEGRATION_MODE=true
-fi
-
-if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
-    shellspec --kcov --format junit > build/log/junit.xml
-    mv coverage build/log
+    script/python/test.sh --ci-mode
 else
-    shellspec
-fi
-
-if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
-    SYSTEM=$(uname)
-
-    if [ "${SYSTEM}" = Darwin ]; then
-        TEE='gtee'
-    else
-        TEE='tee'
-    fi
-
-    mkdir -p build/log
-    py.test -c .pytest-ci.ini "$@" | "${TEE}" build/log/pytest.log
-else
-    py.test -c .pytest.ini "$@"
+    script/python/test.sh
 fi
