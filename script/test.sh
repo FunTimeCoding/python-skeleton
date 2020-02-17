@@ -1,17 +1,29 @@
 #!/bin/sh -e
 
-if [ "${1}" = --ci-mode ]; then
-    shift
-    SYSTEM=$(uname)
+DIRECTORY=$(dirname "${0}")
+SCRIPT_DIRECTORY=$(
+    cd "${DIRECTORY}" || exit 1
+    pwd
+)
+# shellcheck source=/dev/null
+. "${SCRIPT_DIRECTORY}/../configuration/project.sh"
 
-    if [ "${SYSTEM}" = Darwin ]; then
-        TEE='gtee'
-    else
-        TEE='tee'
+if [ "${1}" = --help ]; then
+    echo "Usage: ${0} [--ci-mode]"
+
+    exit 0
+fi
+
+if [ "${1}" = --ci-mode ]; then
+    if [ -d spec ]; then
+        script/shell/test.sh --ci-mode
     fi
 
-    mkdir -p build/log
-    py.test -c .pytest-ci.ini "$@" | "${TEE}" build/log/pytest.log
+    script/python/test.sh --ci-mode
 else
-    py.test -c .pytest.ini "$@"
+    if [ -d spec ]; then
+        script/shell/test.sh --ci-mode
+    fi
+
+    script/python/test.sh
 fi

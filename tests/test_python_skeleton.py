@@ -1,3 +1,5 @@
+import os
+
 from mccabe import main as mccabe_main
 from python_skeleton.python_skeleton import PythonSkeleton
 
@@ -11,7 +13,7 @@ def test_return_code(capsys) -> None:
 
 
 def test_flake_command(capsys) -> None:
-    mccabe_main()
+    mccabe_main([os.path.abspath(__file__)])
     output, error = capsys.readouterr()
     assert output != ''
     assert error == ''
