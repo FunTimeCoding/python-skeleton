@@ -15,7 +15,15 @@ if [ "${1}" = --help ]; then
 fi
 
 if [ "${1}" = --ci-mode ]; then
+    if [ -d spec ]; then
+        script/shell/test.sh --ci-mode
+    fi
+
     script/python/test.sh --ci-mode
 else
+    if [ -d spec ]; then
+        script/shell/test.sh --ci-mode
+    fi
+
     script/python/test.sh
 fi
