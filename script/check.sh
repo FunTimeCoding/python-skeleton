@@ -160,7 +160,7 @@ if [ ! "${PYCODESTYLE_CONCERNS}" = '' ]; then
 fi
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
-    echo "${PYCODESTYLE_CONCERNS}" > build/log/pycodestyle.txt
+    echo "${PYCODESTYLE_CONCERNS}" >build/log/pycodestyle.txt
 fi
 
 PYTHON_FILES=$(${FIND} . -regextype posix-extended -type f -name '*.py' -regex "${INCLUDE_FILTER}" ! -regex "${INCLUDE_STILL_FILTER}")
@@ -172,7 +172,7 @@ echo "[NOTICE] Pylint report:"
 echo "${PYLINT_OUTPUT}"
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
-    echo "${PYLINT_OUTPUT}" > build/log/pylint.txt
+    echo "${PYLINT_OUTPUT}" >build/log/pylint.txt
 fi
 
 if [ ! "${RETURN_CODE}" = 0 ]; then
@@ -184,7 +184,7 @@ RETURN_CODE=0
 MYPY_OUTPUT=$(mypy --ignore-missing-imports .) || RETURN_CODE=$?
 
 if [ "${CONTINUOUS_INTEGRATION_MODE}" = true ]; then
-    echo "${MYPY_OUTPUT}" > build/log/mypy.txt
+    echo "${MYPY_OUTPUT}" >build/log/mypy.txt
 fi
 
 if [ ! "${RETURN_CODE}" = 0 ]; then
