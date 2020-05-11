@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 
-from python_skeleton.command_process import CommandProcess
+from python_utility.command_process import CommandProcess
 
 
 def main():
-    process = CommandProcess([
-        'flake8',
-        '--exclude', '.venv,.git,.idea,.tox',
-        '--verbose',
-        '--max-complexity', '5'
-    ])
+    process = CommandProcess(
+        arguments=[
+            'flake8',
+            '--exclude', '.venv,.git,.idea,.tox',
+            '--verbose',
+            '--max-complexity', '5'
+        ],
+    )
     process.print_output()
 
 

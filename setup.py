@@ -24,8 +24,8 @@ setup(
         'Topic :: Software Development',
     ],
     keywords='development project skeleton',
-    packages=['python_skeleton', 'python_skeleton.language_example'],
-    install_requires=['pyyaml'],
+    packages=['python_skeleton'],
+    install_requires=[],
     python_requires='>=3.2',
     entry_points={
         'console_scripts': [

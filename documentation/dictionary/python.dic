@@ -15,6 +15,7 @@ getsockname
 DevPi
 pip3
 python3
+gitpython
 
 # pytest
 pytest
