@@ -29,7 +29,7 @@ FILES=$(${FIND} . -type f -regextype posix-extended ! -regex "${FILES_EXCLUDE}" 
 DIRECTORIES_EXCLUDE='^.*\/(build|tmp|vendor|node_modules|\.git|\.vagrant|\.idea|\.tox|__pycache__)(\/.*)?$'
 DIRECTORIES=$(${FIND} . -type d -regextype posix-extended ! -regex "${DIRECTORIES_EXCLUDE}" | ${WC} --lines)
 INCLUDE='^.*\.py$'
-# TODO: Extract .venv, .tox and maybe __pycache_ and .egg-info into EXCLUDE_PYTHON variables?
+# TODO: Extract .tox into EXCLUDE_PYTHON variables?
 CODE_EXCLUDE='^.*\/(build|tmp|vendor|node_modules|\.git|\.vagrant|\.idea|\.tox)\/.*$'
 CODE_EXCLUDE_JAVA_SCRIPT='^\.\/web/main\.js$'
 CODE=$(${FIND} . -type f -regextype posix-extended -regex "${INCLUDE}" -and ! -regex "${CODE_EXCLUDE}" -and ! -regex "${CODE_EXCLUDE_JAVA_SCRIPT}" | xargs cat)
@@ -54,7 +54,7 @@ if [ "${1}" = --ci-mode ]; then
     if [ -f "${HOME}/.static-analysis-tools.sh" ]; then
         # shellcheck source=/dev/null
         . "${HOME}/.static-analysis-tools.sh"
-        sonar-scanner "-Dsonar.projectKey=${PROJECT_NAME_DASH}" -Dsonar.sources=. "-Dsonar.host.url=${SONAR_SERVER}" "-Dsonar.login=${SONAR_TOKEN}" | "${TEE}" build/log/sonar-runner.log
+        sonar-scanner --define "sonar.projectKey=${PROJECT_NAME_DASH}" --define "sonar.sources=." --define "sonar.host.url=${SONAR_SERVER}" --define "sonar.login=${SONAR_TOKEN}" | "${TEE}" build/log/sonar-runner.log
     else
         echo "SonarQube configuration missing."
 
@@ -78,6 +78,7 @@ if [ "${1}" = --ci-mode ]; then
             exit 1
         else
             printf .
+            sleep 1
         fi
     done
 
