@@ -3,7 +3,6 @@ branch = True
 omit = tests/*
        */__init__.py
        setup.py
-       .venv/*
 [html]
 directory = build/htmlcov
 [xml]

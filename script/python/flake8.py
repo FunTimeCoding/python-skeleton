@@ -7,7 +7,7 @@ def main():
     process = CommandProcess(
         arguments=[
             'flake8',
-            '--exclude', '.venv,.git,.idea,.tox',
+            '--exclude', '.git,.idea,.tox',
             '--verbose',
             '--max-complexity', '5'
         ],

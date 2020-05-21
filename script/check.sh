@@ -149,7 +149,7 @@ if [ ! "${SHELLCHECK_DISABLES}" = '' ]; then
     echo "${SHELLCHECK_DISABLES}"
 fi
 
-PYCODESTYLE_CONCERNS=$(pycodestyle --exclude=.git,.tox,.venv,__pycache__ --statistics . 2>&1) || true
+PYCODESTYLE_CONCERNS=$(pycodestyle --exclude=.git,.tox,__pycache__ --statistics . 2>&1) || true
 
 if [ ! "${PYCODESTYLE_CONCERNS}" = '' ]; then
     CONCERN_FOUND=true
