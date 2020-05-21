@@ -1,18 +1,17 @@
+from argparse import ArgumentParser, Namespace
 from sys import argv as argument_vector, exit as system_exit
 
 
 class PythonSkeleton:
-    def __init__(self, arguments: list) -> None:
-        self.arguments = arguments
+    def __init__(self, parsed_arguments: Namespace) -> None:
+        self.parsed_arguments = parsed_arguments
 
     @staticmethod
     def main() -> None:
-        if len(argument_vector) > 0:
-            arguments = argument_vector[1:]
-        else:
-            arguments = []
-
-        system_exit(PythonSkeleton(arguments).run())
+        parser = ArgumentParser()
+        parser.add_argument('name', nargs='?', default='friend')
+        parsed_arguments = parser.parse_args(argument_vector[1:])
+        system_exit(PythonSkeleton(parsed_arguments).run())
 
     def run(self) -> int:
         exit_code = 0
@@ -21,7 +20,4 @@ class PythonSkeleton:
         return exit_code
 
     def hello(self) -> None:
-        if len(self.arguments) > 0:
-            print('Hello ' + self.arguments[0] + '.')
-        else:
-            print('Hello friend.')
+        print('Hello ' + self.parsed_arguments.name + '.')
