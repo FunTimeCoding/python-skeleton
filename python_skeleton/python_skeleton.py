@@ -3,7 +3,7 @@ from sys import argv as argument_vector, exit as system_exit
 
 class PythonSkeleton:
     def __init__(self, arguments: list) -> None:
-        pass
+        self.arguments = arguments
 
     @staticmethod
     def main() -> None:
@@ -15,6 +15,8 @@ class PythonSkeleton:
 
         return exit_code
 
-    @staticmethod
-    def hello() -> None:
-        print('Hello friend.')
+    def hello(self) -> None:
+        if len(self.arguments) > 0:
+            print('Hello ' + self.arguments[0] + '.')
+        else:
+            print('Hello friend.')
