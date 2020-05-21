@@ -15,3 +15,8 @@ hunspell
 wget
 myspell
 NFS
+slappasswd
+shellspec
+kcov
+regextype
+Solaris

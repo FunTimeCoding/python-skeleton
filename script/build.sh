@@ -15,13 +15,12 @@ pip3 install --editable .
 script/check.sh --ci-mode
 script/measure.sh --ci-mode
 script/test.sh --ci-mode
-./setup.py bdist_wheel --dist-dir build
-SYSTEM=$(uname)
-
-if [ "${SYSTEM}" = Linux ]; then
-    script/debian/package.sh
-fi
-
-script/publish.sh --ci-mode
-# TODO: Finish implementation.
-#script/docker/build.sh
+#SYSTEM=$(uname)
+#
+# TODO: Needs polish.
+#if [ "${SYSTEM}" = Linux ]; then
+#    script/debian/package.sh
+#    script/docker/build.sh
+#    script/python/package.sh
+#    script/publish.sh --ci-mode
+#fi
