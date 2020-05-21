@@ -1,11 +1,7 @@
 #!/bin/sh -e
 
 rm -rf build
-
-if [ ! -d "${HOME}/venv" ]; then
-    python3 -m venv "${HOME}/venv"
-fi
-
+script/python/venv.sh
 # shellcheck source=/dev/null
 . "${HOME}/venv/bin/activate"
 pip3 install --upgrade pip
