@@ -7,7 +7,12 @@ class PythonSkeleton:
 
     @staticmethod
     def main() -> None:
-        system_exit(PythonSkeleton(argument_vector[1:]).run())
+        if len(argument_vector) > 0:
+            arguments = argument_vector[1:]
+        else:
+            arguments = []
+
+        system_exit(PythonSkeleton(arguments).run())
 
     def run(self) -> int:
         exit_code = 0
