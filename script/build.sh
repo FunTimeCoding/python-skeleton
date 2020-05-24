@@ -9,8 +9,8 @@ pip3 install wheel
 pip3 install --requirement requirements.txt
 pip3 install --editable .
 script/check.sh --ci-mode
-script/measure.sh --ci-mode
 script/test.sh --ci-mode
+script/measure.sh --ci-mode
 #SYSTEM=$(uname)
 #
 # TODO: Needs polish.
