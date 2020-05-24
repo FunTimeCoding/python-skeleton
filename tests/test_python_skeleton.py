@@ -1,11 +1,12 @@
 import os
+from argparse import Namespace
 
 from mccabe import main as mccabe_main
 from python_skeleton.python_skeleton import PythonSkeleton
 
 
 def test_return_code(capsys) -> None:
-    exit_code = PythonSkeleton([]).run()
+    exit_code = PythonSkeleton(Namespace(name='friend')).run()
     assert exit_code == 0
     output, error = capsys.readouterr()
     assert output == 'Hello friend.\n'
