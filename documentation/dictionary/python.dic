@@ -21,6 +21,10 @@ gitpython
 pytest
 exitfirst
 capsys
+xunit
+addopts
+junitxml
+coveragerc
 
 # pylint
 pylint
