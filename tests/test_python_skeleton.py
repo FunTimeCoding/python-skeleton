@@ -1,15 +1,13 @@
 import os
+import pytest
 
 from mccabe import main as mccabe_main
 from python_skeleton.python_skeleton import PythonSkeleton
 
 
 def test_main() -> None:
-    try:
+    with pytest.raises(SystemExit):
         PythonSkeleton.main()
-        assert False
-    except SystemExit:
-        assert True
 
 
 def test_return_code(capsys) -> None:
