@@ -550,10 +550,10 @@ valid-metaclass-classmethod-first-arg=cls
 [DESIGN]
 
 # Maximum number of arguments for function / method.
-max-args=3
+max-args=4
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=3
+max-attributes=4
 
 # Maximum number of boolean expressions in an if statement (see R0916).
 max-bool-expr=1
@@ -565,7 +565,7 @@ max-branches=5
 max-locals=6
 
 # Maximum number of parents for a class (see R0901).
-max-parents=3
+max-parents=4
 
 # Maximum number of public methods for a class (see R0904).
 max-public-methods=10
