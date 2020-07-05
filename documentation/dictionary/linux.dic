@@ -6,3 +6,7 @@ zoneinfo
 mkpasswd
 udev
 inittab
+initrd
+syslinux
+ifdata
+dhclient
