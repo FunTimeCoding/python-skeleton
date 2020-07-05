@@ -3,3 +3,6 @@ inet
 netstat
 libpam
 zoneinfo
+mkpasswd
+udev
+inittab
