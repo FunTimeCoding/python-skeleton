@@ -46,3 +46,5 @@ cdrom
 debconf
 multiraid
 devfs
+pxelinux
+dkms
