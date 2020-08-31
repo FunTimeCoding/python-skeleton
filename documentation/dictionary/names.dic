@@ -40,3 +40,9 @@ postgresql
 ntopng
 collectl
 clickhouse
+Gearman
+elasticsearch
+logstash
+kibana
+filebeat
+metricbeat
