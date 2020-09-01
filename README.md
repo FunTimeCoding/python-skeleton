@@ -32,7 +32,7 @@ pip3 uninstall python-skeleton
 Run the main program:
 
 ```sh
-bin/pyskel
+bin/pysk
 ```
 
 Run the main program inside the container:
