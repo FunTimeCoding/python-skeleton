@@ -18,6 +18,9 @@ ShellSkeleton
 ss
 PythonSkeleton
 pysk
+PythonUtility
 pu
 VirtualizationTools
 vt
+ChatBridge
+cb
