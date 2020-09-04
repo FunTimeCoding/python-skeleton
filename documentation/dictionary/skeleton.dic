@@ -18,6 +18,11 @@ ShellSkeleton
 ss
 PythonSkeleton
 pysk
+PythonUtility
 pu
 VirtualizationTools
 vt
+LoggingTools
+lt
+ChatBridge
+cb
