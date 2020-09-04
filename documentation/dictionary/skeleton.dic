@@ -22,5 +22,7 @@ PythonUtility
 pu
 VirtualizationTools
 vt
+LoggingTools
+lt
 ChatBridge
 cb
