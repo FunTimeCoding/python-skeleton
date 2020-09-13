@@ -9,11 +9,15 @@ SCRIPT_DIRECTORY=$(
 . "${SCRIPT_DIRECTORY}/../../configuration/project.sh"
 docker build --tag "${PROJECT_NAME_DASH}-snapshot" .
 
-GIT_TAG=$(git describe --exact-match --tags HEAD || echo '')
+GIT_TAG=$(git describe --exact-match --tags HEAD 2>/dev/null || echo '')
 
 if [ ! "${GIT_TAG}" = '' ]; then
     script/docker/publish.sh "${GIT_TAG}"
     script/kubernetes/deploy.sh "${GIT_TAG}"
 fi
 
-docker rmi "${PROJECT_NAME_DASH}-snapshot"
+# Save space on CI.
+# TODO: Confirm this does not slow down builds too much.
+if [ "${1}" = --ci-mode ]; then
+    docker rmi "${PROJECT_NAME_DASH}-snapshot"
+fi
