@@ -7,9 +7,4 @@ SCRIPT_DIRECTORY=$(
 )
 # shellcheck source=/dev/null
 . "${SCRIPT_DIRECTORY}/../../configuration/project.sh"
-
-docker ps --all | grep --quiet "${PROJECT_NAME_DASH}" && FOUND=true || FOUND=false
-
-if [ "${FOUND}" = true ]; then
-    docker rm "${PROJECT_NAME_DASH}"
-fi
+kubectl describe deployment "${PROJECT_NAME_DASH}-deployment"
