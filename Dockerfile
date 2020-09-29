@@ -5,6 +5,7 @@ RUN python -m pip install --upgrade pip
 RUN pip install --upgrade wheel
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
+COPY python_skeleton python_skeleton
+COPY setup.py .
 RUN pip install .
-ENTRYPOINT ["pysk"]
+CMD ["pysk"]
