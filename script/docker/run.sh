@@ -33,28 +33,27 @@ else
 
     if [ "${GIT_TAG}" = '' ]; then
         GIT_TAG='latest'
+        shift
     fi
 
-    IMAGE="${PRIVATE_REGISTRY_SERVER}/${VENDOR_NAME_LOWER}/${PROJECT_NAME_DASH}:${GIT_TAG}"
+    git config --get remote.origin.url | grep --quiet github.com && IS_GITHUB=true || IS_GITHUB=false
+
+    if [ "${IS_GITHUB}" = 'true' ]; then
+        REGISTRY_SERVER='ghcr.io'
+    else
+        REGISTRY_SERVER="${PRIVATE_REGISTRY_PASSWORD}"
+    fi
+
+    IMAGE="${REGISTRY_SERVER}/${VENDOR_NAME_LOWER}/${PROJECT_NAME_DASH}:${GIT_TAG}"
 fi
 
-SYSTEM=$(uname)
+SYSTEM=$(uname -o)
 
-# TODO: What is the output of uname on Git Bash on Windows 10?
-if [ "${SYSTEM}" = 'msys' ]; then
+if [ "${SYSTEM}" = 'Msys' ]; then
     # TODO: Add volume parameters that work on Windows.
-    winpty docker run --interactive --tty --rm --name "${PROJECT_NAME_DASH}-instance" --publish 8080:8080 "${IMAGE}"
+    # shellcheck disable=SC2068
+    winpty docker run --interactive --tty --rm --name "${PROJECT_NAME_DASH}-instance" "${IMAGE}" ${@}
 else
-    # TODO: Make it possible to pass arguments to the container?
-    #if [ "${DEVELOPMENT}" = true ]; then
-    #    WORKING_DIRECTORY=$(pwd)
-    #    # shellcheck disable=SC2068
-    #    docker run --interactive --tty --rm --name "${PROJECT_NAME_DASH}-instance" --volume "${WORKING_DIRECTORY}:/${PROJECT_NAME_DASH}" "${IMAGE}" $@
-    #else
-    #    # shellcheck disable=SC2068
-    #    docker run --interactive --tty --rm --name "${PROJECT_NAME_DASH}-instance" "${IMAGE}" $@
-    #fi
-
-    # TODO: Always publish port 8080, make configurable or remove?
-    docker run --interactive --tty --rm --name "${PROJECT_NAME_DASH}-instance" --publish 8080:8080 --volume "${PWD}/tmp:/go/src/app/tmp" "${IMAGE}"
+    # shellcheck disable=SC2068
+    docker run --interactive --tty --rm --name "${PROJECT_NAME_DASH}-instance" "${IMAGE}" ${@}
 fi

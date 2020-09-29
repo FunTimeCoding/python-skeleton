@@ -25,7 +25,7 @@ if [ "${1}" = --ci-mode ]; then
     fi
 
     mkdir -p build/log
-    py.test -c .pytest-ci.ini "$@" | "${TEE}" build/log/pytest.log
+    py.test -c .pytest-ci.ini tests | "${TEE}" build/log/pytest.log
 else
-    py.test -c .pytest.ini "$@"
+    py.test -c .pytest.ini tests tests_local
 fi
