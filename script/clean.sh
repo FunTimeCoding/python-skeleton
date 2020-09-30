@@ -6,5 +6,5 @@ SCRIPT_DIRECTORY=$(
     pwd
 )
 # shellcheck source=/dev/null
-. "${SCRIPT_DIRECTORY}/../../configuration/project.sh"
+. "${SCRIPT_DIRECTORY}/../configuration/project.sh"
 rm -rf build .pytest_cache tests/.pytest_cache .scannerwork .mypy_cache "${PROJECT_NAME_UNDERSCORE}/build.py"
