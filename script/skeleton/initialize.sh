@@ -37,4 +37,3 @@ ${SED} --in-place --expression "s/pysk/${INITIALS}/g" README.md Dockerfile setup
 git mv python_skeleton/python_skeleton.py "python_skeleton/${UNDERSCORE}.py"
 git mv python_skeleton "${UNDERSCORE}"
 git mv tests/test_python_skeleton.py "tests/test_${UNDERSCORE}.py"
-echo "# This dictionary file is for domain language." >"documentation/dictionary/${DASH}.dic"
